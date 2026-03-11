@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { fetchOpenSIDStatistikById } from "@/lib/api-helpers";
+import { fetchOpenSIDStatistikById, createApiRouteHandler } from "@/lib/api-helpers";
 
-export async function GET() {
+export const { GET } = createApiRouteHandler(async () => {
     const fallbackData = {
         prevalensiPendidikan: 0,
         тендер_wus: 0,
@@ -10,10 +10,6 @@ export async function GET() {
         тендер_anak: 0,
         тендер_resiko: 0,
     };
-
-    const response = await fetchOpenSIDStatistikById("8", "pendidikan", {
-        fallbackData,
-    });
-
+    const response = await fetchOpenSIDStatistikById("8", "pendidikan", { fallbackData });
     return NextResponse.json(response.success ? response.data : response);
-}
+});

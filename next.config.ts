@@ -7,6 +7,52 @@ const nextConfig: NextConfig = {
 
     allowedDevOrigins: ['*.clasnet.co.id'],
 
+    async headers() {
+        return [
+            {
+                source: '/:path*',
+                headers: [
+                    {
+                        key: 'Content-Security-Policy',
+                        value: [
+                            "default-src 'self'",
+                            process.env.NODE_ENV === 'development'
+                                ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.openstreetmap.org"
+                                : "script-src 'self' cdn.openstreetmap.org",
+                            "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+                            "font-src 'self' fonts.gstatic.com cdn.jsdelivr.net",
+                            "img-src 'self' data: https: blob:",
+                            "connect-src 'self' https: wss:",
+                            "frame-ancestors 'none'",
+                            "base-uri 'self'",
+                            "form-action 'self'"
+                        ].join('; '),
+                    },
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'DENY'
+                    },
+                    {
+                        key: 'X-Content-Type-Options',
+                        value: 'nosniff'
+                    },
+                    {
+                        key: 'Referrer-Policy',
+                        value: 'strict-origin-when-cross-origin'
+                    },
+                    {
+                        key: 'Permissions-Policy',
+                        value: 'geolocation=(), microphone=(), camera=()'
+                    },
+                    {
+                        key: 'Strict-Transport-Security',
+                        value: 'max-age=31536000; includeSubDomains; preload'
+                    }
+                ]
+            }
+        ];
+    },
+
     images: {
         formats: ['image/avif', 'image/webp'],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -65,7 +111,7 @@ const nextConfig: NextConfig = {
         ],
 
         dangerouslyAllowSVG: false,
-        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+        contentSecurityPolicy: "default-src 'self'; script-src 'self'; sandbox;",
         minimumCacheTTL: 60,
     },
 
