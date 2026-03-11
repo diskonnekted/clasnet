@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
                             "default-src 'self'",
                             process.env.NODE_ENV === 'development'
                                 ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.openstreetmap.org"
-                                : "script-src 'self' cdn.openstreetmap.org",
+                                : "script-src 'self' 'unsafe-inline' cdn.openstreetmap.org",
                             "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
                             "font-src 'self' fonts.gstatic.com cdn.jsdelivr.net",
                             "img-src 'self' data: https: blob:",
