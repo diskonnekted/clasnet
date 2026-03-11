@@ -47,6 +47,9 @@ npm run start
 - `CORS_ORIGIN`: origin yang diizinkan mengakses API portal
 - `RATE_LIMIT_WINDOW_MS`, `RATE_LIMIT_MAX`: konfigurasi rate limiting route `/api`
 
+## Keterangan Data Pribadi
+Portal Pondokrejo tidak melakukan pengumpulan, perekaman, maupun penyimpanan data pribadi pengguna secara mandiri. Portal ini berfungsi sebagai media penyajian informasi yang bersumber dari sistem/layanan upstream milik Kalurahan Pondokrejo. Dengan demikian, kewajiban pengelolaan dan pemenuhan ketentuan perlindungan data pribadi melekat pada sistem sumber sesuai kewenangan dan kebijakan masing-masing. Portal Pondokrejo tetap menerapkan pengamanan teknis yang wajar untuk menjaga integritas layanan.
+
 ## Keamanan dan Operasional
 - Security headers dan Content Security Policy (CSP) dikonfigurasi global di [next.config.ts](file:///d:/xampp/htdocs/audit-pondokrejo/next-pondokrejo/next.config.ts).
 - CORS distandarkan untuk route API utama melalui helper internal dan dibatasi oleh konfigurasi environment.
