@@ -122,10 +122,12 @@ function decodeHtmlEntities(text: string): string {
 async function fetchFromOpenSID(_endpoint: string = "", params: Record<string, string> = {}) {
     // Use proxy API route to avoid CORS issues
     const baseUrl =
-        env.NEXTAUTH_URL ||
-        env.NEXT_PUBLIC_SITE_URL ||
-        // Fallback to local dev
-        "http://localhost:5091";
+        typeof window !== "undefined"
+            ? window.location.origin
+            : env.NEXTAUTH_URL ||
+              env.NEXT_PUBLIC_SITE_URL ||
+              (env.VERCEL_URL ? `https://${env.VERCEL_URL}` : undefined) ||
+              "https://pondokrejo.clasnet.co.id";
     const url = new URL("/api/opensid-proxy", baseUrl);
 
     // Add parameters if needed
