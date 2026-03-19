@@ -2,6 +2,19 @@
 
 import * as React from "react";
 import { BarChart3, Droplets, Home, Users } from "lucide-react";
+import {
+    Bar,
+    BarChart,
+    CartesianGrid,
+    Cell,
+    Legend,
+    Pie,
+    PieChart,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis,
+} from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -35,6 +48,44 @@ function formatNumber(n: number) {
     return new Intl.NumberFormat("id-ID").format(n);
 }
 
+const CHART_COLORS = [
+    "#3b82f6",
+    "#10b981",
+    "#f59e0b",
+    "#ef4444",
+    "#8b5cf6",
+    "#06b6d4",
+    "#f97316",
+    "#14b8a6",
+    "#6366f1",
+    "#ec4899",
+];
+
+function parseIncomeComparison(obj: Record<string, number>) {
+    const buckets: Record<string, { bucket: string; miskin: number; mampu: number }> = {};
+    Object.entries(obj || {}).forEach(([rawKey, value]) => {
+        const parts = rawKey.split(" - ");
+        if (parts.length < 2) return;
+        const group = parts[0]?.trim();
+        const bucket = parts.slice(1).join(" - ").trim();
+        if (!bucket) return;
+        const item = buckets[bucket] || { bucket, miskin: 0, mampu: 0 };
+        if (group.toLowerCase().includes("miskin")) item.miskin += value;
+        if (group.toLowerCase().includes("mampu")) item.mampu += value;
+        buckets[bucket] = item;
+    });
+
+    const order = ["< Rp1 Juta", "Rp1 - 2 Juta", "> Rp2 Juta"];
+    return Object.values(buckets).sort((a, b) => {
+        const ia = order.indexOf(a.bucket);
+        const ib = order.indexOf(b.bucket);
+        if (ia === -1 && ib === -1) return a.bucket.localeCompare(b.bucket);
+        if (ia === -1) return 1;
+        if (ib === -1) return -1;
+        return ia - ib;
+    });
+}
+
 export default function AnalitikPage() {
     const [data, setData] = React.useState<AnalyticsData | null>(null);
     const [sourceUrl, setSourceUrl] = React.useState<string>("https://peta.pondokrejo.id/analytics");
@@ -61,6 +112,26 @@ export default function AnalitikPage() {
     React.useEffect(() => {
         fetchData();
     }, [fetchData]);
+
+    const incomeChartData = React.useMemo(() => {
+        if (!data) return [];
+        return Object.entries(data.income_distribution || {}).map(([name, value]) => ({ name, value }));
+    }, [data]);
+
+    const jobChartData = React.useMemo(() => {
+        if (!data) return [];
+        return toTopEntries(data.job_profile_poor, 10).map(([name, value]) => ({ name, value }));
+    }, [data]);
+
+    const educationChartData = React.useMemo(() => {
+        if (!data) return [];
+        return toTopEntries(data.education_poor, 10).map(([name, value]) => ({ name, value }));
+    }, [data]);
+
+    const incomeComparisonChartData = React.useMemo(() => {
+        if (!data) return [];
+        return parseIncomeComparison(data.income_comparison);
+    }, [data]);
 
     return (
         <div className="min-h-screen bg-linear-to-b from-gray-50 to-white py-8">
@@ -195,7 +266,38 @@ export default function AnalitikPage() {
                                 <CardHeader>
                                     <CardTitle className="text-base">Distribusi Pendapatan</CardTitle>
                                 </CardHeader>
-                                <CardContent className="space-y-2">
+                                <CardContent className="space-y-4">
+                                    <div className="h-56 w-full">
+                                        <ResponsiveContainer>
+                                            <PieChart>
+                                                <Pie
+                                                    data={incomeChartData}
+                                                    dataKey="value"
+                                                    nameKey="name"
+                                                    innerRadius={45}
+                                                    outerRadius={80}
+                                                    paddingAngle={2}
+                                                >
+                                                    {incomeChartData.map((entry, index) => (
+                                                        <Cell key={entry.name} fill={CHART_COLORS[index % CHART_COLORS.length]} />
+                                                    ))}
+                                                </Pie>
+                                                <Tooltip
+                                                    content={({ active, payload }) => {
+                                                        if (!active || !payload?.length) return null;
+                                                        const p = payload[0] as { name?: string; value?: number };
+                                                        return (
+                                                            <div className="rounded-lg border bg-background px-3 py-2 text-xs shadow-xl">
+                                                                <div className="font-semibold">{p.name}</div>
+                                                                <div className="text-muted-foreground">{formatNumber(p.value || 0)}</div>
+                                                            </div>
+                                                        );
+                                                    }}
+                                                />
+                                                <Legend wrapperStyle={{ fontSize: 11 }} />
+                                            </PieChart>
+                                        </ResponsiveContainer>
+                                    </div>
                                     {Object.entries(data.income_distribution || {}).map(([label, value]) => (
                                         <div key={label} className="flex items-center justify-between">
                                             <div className="text-sm text-muted-foreground">{label}</div>
@@ -210,7 +312,29 @@ export default function AnalitikPage() {
                                 <CardHeader>
                                     <CardTitle className="text-base">Pekerjaan Keluarga Miskin (Top)</CardTitle>
                                 </CardHeader>
-                                <CardContent className="space-y-2">
+                                <CardContent className="space-y-4">
+                                    <div className="h-56 w-full">
+                                        <ResponsiveContainer>
+                                            <BarChart data={jobChartData} layout="vertical" margin={{ left: 16, right: 8 }}>
+                                                <CartesianGrid strokeDasharray="3 3" />
+                                                <XAxis type="number" tickFormatter={(v) => formatNumber(Number(v))} />
+                                                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10 }} />
+                                                <Tooltip
+                                                    content={({ active, payload }) => {
+                                                        if (!active || !payload?.length) return null;
+                                                        const p = payload[0] as { payload?: { name?: string; value?: number } };
+                                                        return (
+                                                            <div className="rounded-lg border bg-background px-3 py-2 text-xs shadow-xl">
+                                                                <div className="font-semibold">{p.payload?.name}</div>
+                                                                <div className="text-muted-foreground">{formatNumber(p.payload?.value || 0)}</div>
+                                                            </div>
+                                                        );
+                                                    }}
+                                                />
+                                                <Bar dataKey="value" fill="#7c3aed" radius={[6, 6, 6, 6]} />
+                                            </BarChart>
+                                        </ResponsiveContainer>
+                                    </div>
                                     {toTopEntries(data.job_profile_poor, 10).map(([label, value]) => (
                                         <div key={label} className="flex items-center justify-between">
                                             <div className="text-sm text-muted-foreground truncate">{label}</div>
@@ -224,7 +348,29 @@ export default function AnalitikPage() {
                                 <CardHeader>
                                     <CardTitle className="text-base">Pendidikan Kepala Keluarga Miskin (Top)</CardTitle>
                                 </CardHeader>
-                                <CardContent className="space-y-2">
+                                <CardContent className="space-y-4">
+                                    <div className="h-56 w-full">
+                                        <ResponsiveContainer>
+                                            <BarChart data={educationChartData} layout="vertical" margin={{ left: 16, right: 8 }}>
+                                                <CartesianGrid strokeDasharray="3 3" />
+                                                <XAxis type="number" tickFormatter={(v) => formatNumber(Number(v))} />
+                                                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10 }} />
+                                                <Tooltip
+                                                    content={({ active, payload }) => {
+                                                        if (!active || !payload?.length) return null;
+                                                        const p = payload[0] as { payload?: { name?: string; value?: number } };
+                                                        return (
+                                                            <div className="rounded-lg border bg-background px-3 py-2 text-xs shadow-xl">
+                                                                <div className="font-semibold">{p.payload?.name}</div>
+                                                                <div className="text-muted-foreground">{formatNumber(p.payload?.value || 0)}</div>
+                                                            </div>
+                                                        );
+                                                    }}
+                                                />
+                                                <Bar dataKey="value" fill="#2563eb" radius={[6, 6, 6, 6]} />
+                                            </BarChart>
+                                        </ResponsiveContainer>
+                                    </div>
                                     {toTopEntries(data.education_poor, 10).map(([label, value]) => (
                                         <div key={label} className="flex items-center justify-between">
                                             <div className="text-sm text-muted-foreground truncate">{label}</div>
@@ -239,13 +385,41 @@ export default function AnalitikPage() {
                             <CardHeader>
                                 <CardTitle className="text-base">Perbandingan Pendapatan (Miskin vs Mampu)</CardTitle>
                             </CardHeader>
-                            <CardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                            <CardContent className="space-y-6">
+                                <div className="h-72 w-full">
+                                    <ResponsiveContainer>
+                                        <BarChart data={incomeComparisonChartData} margin={{ left: 8, right: 8 }}>
+                                            <CartesianGrid strokeDasharray="3 3" />
+                                            <XAxis dataKey="bucket" tick={{ fontSize: 11 }} />
+                                            <YAxis tickFormatter={(v) => formatNumber(Number(v))} />
+                                            <Tooltip
+                                                content={({ active, payload, label }) => {
+                                                    if (!active || !payload?.length) return null;
+                                                    const miskin = payload.find((p) => p.dataKey === "miskin")?.value || 0;
+                                                    const mampu = payload.find((p) => p.dataKey === "mampu")?.value || 0;
+                                                    return (
+                                                        <div className="rounded-lg border bg-background px-3 py-2 text-xs shadow-xl">
+                                                            <div className="font-semibold">{label}</div>
+                                                            <div className="text-muted-foreground">Miskin: {formatNumber(Number(miskin))}</div>
+                                                            <div className="text-muted-foreground">Mampu: {formatNumber(Number(mampu))}</div>
+                                                        </div>
+                                                    );
+                                                }}
+                                            />
+                                            <Legend wrapperStyle={{ fontSize: 11 }} />
+                                            <Bar dataKey="miskin" name="Miskin" fill="#ef4444" radius={[6, 6, 0, 0]} />
+                                            <Bar dataKey="mampu" name="Mampu" fill="#10b981" radius={[6, 6, 0, 0]} />
+                                        </BarChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                                 {Object.entries(data.income_comparison || {}).map(([label, value]) => (
                                     <div key={label} className="rounded-lg border p-4">
                                         <div className="text-xs text-muted-foreground line-clamp-2">{label}</div>
                                         <div className="text-2xl font-bold mt-2">{formatNumber(value)}</div>
                                     </div>
                                 ))}
+                                </div>
                             </CardContent>
                         </Card>
                     </div>
@@ -254,4 +428,3 @@ export default function AnalitikPage() {
         </div>
     );
 }
-
