@@ -29,7 +29,7 @@ export const { GET, OPTIONS } = createApiRouteHandler(async (request: NextReques
 
         // Fetch news data from external API
         const response = await fetch(
-            `${env.OPENSID_API_URL ?? "http://pondokrejo.sleman-desa.id"}/internal_api/arsip`,
+            `${env.OPENSID_API_URL ?? "https://pondokrejo.sleman-desa.id"}/internal_api/arsip`,
             {
                 method: "GET",
                 headers: {

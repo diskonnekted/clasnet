@@ -61,6 +61,36 @@ const nextConfig: NextConfig = {
 
         remotePatterns: [
             {
+                protocol: 'https',
+                hostname: 'pustaka.pondokrejo.id',
+                port: '',
+                pathname: '/uploads/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'ttg.pondokrejo.id',
+                port: '',
+                pathname: '/uploads/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'ttg.pondokrejo.id',
+                port: '',
+                pathname: '/assets/**',
+            },
+            {
+                protocol: 'http',
+                hostname: 'www.pondokrejo.sleman-desa.id',
+                port: '',
+                pathname: '/storage-desa',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.pondokrejo.sleman-desa.id',
+                port: '',
+                pathname: '/storage-desa',
+            },
+            {
                 protocol: 'http',
                 hostname: 'pondokrejo.sleman-desa.id',
                 port: '',

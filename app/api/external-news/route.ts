@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { fetchLocalAPI, createApiRouteHandler } from "@/lib/api-helpers";
+import { fetchOpenSIDArsip, createApiRouteHandler } from "@/lib/api-helpers";
 
 // Type definitions for OpenSID article structure
 interface OpenSIDAuthor {
@@ -14,7 +14,8 @@ interface OpenSIDCategory {
 
 interface OpenSIDAttributes {
     judul: string;
-    slug: string;
+    slug?: string;
+    url_slug?: string;
     isi: string;
     gambar: string | null;
     author?: OpenSIDAuthor;
@@ -250,34 +251,40 @@ function parseOpenSIDDate(dateStr: string): string {
 
 export const { GET, OPTIONS } = createApiRouteHandler(async () => {
     try {
-        // Use the new consolidated API service
-        const response = await fetchLocalAPI("/api/opensid-berita", {
-            cacheTags: ["opensid-data-berita"],
-        });
+        const response = await fetchOpenSIDArsip();
 
         if (!response.success || !response.data) {
-            throw new Error("Invalid response format");
+            throw new Error(response.message || "Gagal mengambil data OpenSID");
         }
 
-        const data = response.data as { data: OpenSIDArticle[] };
+        const raw = response.data as { data?: OpenSIDArticle[] };
+        const articles = raw.data ?? [];
 
-        if (!data?.data) {
-            throw new Error("Invalid response format");
-        }
+        const siteBaseUrl = "https://pondokrejo.sleman-desa.id";
 
-        const articles = data.data;
+        const toAbsoluteImageUrl = (imageUrl: string | null): string | null => {
+            if (!imageUrl) return null;
+            if (!imageUrl.includes("/")) {
+                return `${siteBaseUrl}/desa/upload/artikel/sedang_${imageUrl}`;
+            }
+            if (imageUrl.startsWith("/")) {
+                return `${siteBaseUrl}${imageUrl}`.replace(/^http:\/\//i, "https://");
+            }
+            return imageUrl.replace(/^http:\/\//i, "https://");
+        };
 
         // Transform OpenSID data to match expected format for homepage
         const transformedPosts = articles.slice(0, 10).map((article: OpenSIDArticle) => {
             const attributes = article.attributes;
+            const derivedSlug = attributes.slug || (attributes.url_slug ? attributes.url_slug.split("/").pop() || attributes.url_slug : "");
 
             return {
                 id: article.id,
                 title: decodeHtmlEntities(attributes.judul),
-                slug: attributes.slug,
+                slug: derivedSlug,
                 excerpt: `${decodeHtmlEntities(attributes.isi.replace(/<[^>]*>/g, "")).substring(0, 200)}...`,
                 content: attributes.isi,
-                featuredImage: attributes.gambar || null,
+                featuredImage: toAbsoluteImageUrl(attributes.gambar),
                 readingTime: calculateReadingTime(attributes.isi),
                 author: {
                     name: attributes.author?.nama ?? "Admin Kalurahan",
@@ -296,7 +303,7 @@ export const { GET, OPTIONS } = createApiRouteHandler(async () => {
                 tags: [],
                 publishedAt: parseOpenSIDDate(attributes.tgl_upload),
                 updatedAt: parseOpenSIDDate(attributes.tgl_upload),
-                link: `/berita/${attributes.slug}`,
+                link: `/berita/${derivedSlug}`,
                 readTime: Math.max(1, Math.ceil(attributes.isi.split(" ").length / 200)),
                 isBreaking: false,
                 isFeatured: false,

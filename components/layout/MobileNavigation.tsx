@@ -16,6 +16,8 @@ import {
     HardHat,
     CalendarDays,
     Store,
+    BookOpen,
+    Wrench,
     MessageCircle,
     BarChart3,
     Heart,
@@ -32,6 +34,7 @@ import {
     Shield,
     CreditCard,
     ChevronRight,
+    Sparkles,
 } from "lucide-react";
 
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -464,6 +467,94 @@ export function MobileNavigation() {
                                         {isActive("/ppid") && (
                                             <div className="ml-auto w-2 h-2 bg-current rounded-full" />
                                         )}
+                                    </Link>
+
+                                    {/* Inovasi Section Header */}
+                                    <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider mt-4 flex items-center gap-2">
+                                        <Sparkles className="h-4 w-4" />
+                                        Inovasi
+                                    </div>
+
+                                    <Link
+                                        key="/posyandu"
+                                        href="/posyandu"
+                                        onClick={() => setIsSidebarOpen(false)}
+                                        className={`flex items-center gap-3 px-3 py-3 text-sm rounded-md transition-all duration-200 mb-1 cursor-pointer ${
+                                            isActive("/posyandu")
+                                                ? "bg-primary text-primary-foreground font-medium"
+                                                : "hover:bg-accent hover:text-accent-foreground"
+                                        }`}
+                                    >
+                                        <Heart
+                                            className={`h-5 w-5 shrink-0 ${
+                                                isActive("/posyandu") ? "text-primary-foreground" : "text-primary"
+                                            }`}
+                                        />
+                                        <span className="truncate">Posyandu Digital</span>
+                                        {isActive("/posyandu") && (
+                                            <div className="ml-auto w-2 h-2 bg-current rounded-full" />
+                                        )}
+                                    </Link>
+
+                                    <Link
+                                        key="/pustaka"
+                                        href="/pustaka"
+                                        onClick={() => setIsSidebarOpen(false)}
+                                        className={`flex items-center gap-3 px-3 py-3 text-sm rounded-md transition-all duration-200 mb-1 cursor-pointer ${
+                                            isActive("/pustaka")
+                                                ? "bg-primary text-primary-foreground font-medium"
+                                                : "hover:bg-accent hover:text-accent-foreground"
+                                        }`}
+                                    >
+                                        <BookOpen
+                                            className={`h-5 w-5 shrink-0 ${
+                                                isActive("/pustaka") ? "text-primary-foreground" : "text-primary"
+                                            }`}
+                                        />
+                                        <span className="truncate">Perpustakaan Digital</span>
+                                        {isActive("/pustaka") && (
+                                            <div className="ml-auto w-2 h-2 bg-current rounded-full" />
+                                        )}
+                                    </Link>
+
+                                    <Link
+                                        key="/lapak-digital"
+                                        href="/lapak-digital"
+                                        onClick={() => setIsSidebarOpen(false)}
+                                        className={`flex items-center gap-3 px-3 py-3 text-sm rounded-md transition-all duration-200 mb-1 cursor-pointer ${
+                                            isActive("/lapak-digital")
+                                                ? "bg-primary text-primary-foreground font-medium"
+                                                : "hover:bg-accent hover:text-accent-foreground"
+                                        }`}
+                                    >
+                                        <Store
+                                            className={`h-5 w-5 shrink-0 ${
+                                                isActive("/lapak-digital") ? "text-primary-foreground" : "text-primary"
+                                            }`}
+                                        />
+                                        <span className="truncate">Lapak Digital</span>
+                                        {isActive("/lapak-digital") && (
+                                            <div className="ml-auto w-2 h-2 bg-current rounded-full" />
+                                        )}
+                                    </Link>
+
+                                    <Link
+                                        key="/ttg"
+                                        href="/ttg"
+                                        onClick={() => setIsSidebarOpen(false)}
+                                        className={`flex items-center gap-3 px-3 py-3 text-sm rounded-md transition-all duration-200 mb-1 cursor-pointer ${
+                                            isActive("/ttg")
+                                                ? "bg-primary text-primary-foreground font-medium"
+                                                : "hover:bg-accent hover:text-accent-foreground"
+                                        }`}
+                                    >
+                                        <Wrench
+                                            className={`h-5 w-5 shrink-0 ${
+                                                isActive("/ttg") ? "text-primary-foreground" : "text-primary"
+                                            }`}
+                                        />
+                                        <span className="truncate">Teknologi Tepat Guna</span>
+                                        {isActive("/ttg") && <div className="ml-auto w-2 h-2 bg-current rounded-full" />}
                                     </Link>
 
                                     {/* Statistik Section Header */}

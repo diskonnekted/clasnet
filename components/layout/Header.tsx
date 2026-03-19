@@ -6,7 +6,6 @@ import {
     Search,
     Bell,
     ChevronDown,
-    User,
     Info,
     Home,
     Cpu,
@@ -19,6 +18,7 @@ import {
     Newspaper,
     Users,
     Heart,
+    Sparkles,
     Shield,
     CreditCard,
     GraduationCap,
@@ -51,6 +51,7 @@ export function Header() {
         { href: "/pemerintahan", label: t("navigation.pemerintahan"), icon: Building2 },
         { href: "/informasi", label: "Informasi", icon: Newspaper },
         { href: "/statistik", label: "Statistik", icon: BarChart3 },
+        { href: "/inovasi", label: "Inovasi", icon: Sparkles },
         { href: "/ppid", label: "PPID", icon: BookCheck },
         { href: "/idm", label: "IDM", icon: FileText },
         { href: "/sdgs", label: "SDGs", icon: Globe },
@@ -70,6 +71,13 @@ export function Header() {
         { href: "/berita", label: t("navigation.berita") },
         { href: "/pengumuman", label: "Pengumuman" },
         { href: "/kegiatan", label: t("navigation.kegiatan") },
+    ];
+
+    const inovasiSubItems = [
+        { href: "/posyandu", label: "Posyandu Digital" },
+        { href: "/pustaka", label: "Perpustakaan Digital" },
+        { href: "/lapak-digital", label: "Lapak Digital" },
+        { href: "/ttg", label: "Teknologi Tepat Guna" },
     ];
 
     // Categorized statistik sub-items
@@ -328,6 +336,7 @@ export function Header() {
                             const isPemerintahanItem = item.href === "/pemerintahan";
                             const isInformasiItem = item.href === "/informasi";
                             const isStatistikItem = item.href === "/statistik";
+                            const isInovasiItem = item.href === "/inovasi";
                             const IconComponent = item.icon;
 
                             if (isPemerintahanItem) {
@@ -428,6 +437,35 @@ export function Header() {
                                                     </DropdownMenuSub>
                                                 );
                                             })}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                );
+                            }
+
+                            if (isInovasiItem) {
+                                return (
+                                    <DropdownMenu key={item.href}>
+                                        <DropdownMenuTrigger asChild>
+                                            <Button
+                                                variant="ghost"
+                                                className="px-4! py-2! text-sm! text-white! bg-transparent! hover:bg-[#2a77a7]! hover:text-white! data-[state=open]:bg-[#2a77a7]! data-[state=open]:text-white! rounded-md transition-colors cursor-pointer h-auto"
+                                            >
+                                                <IconComponent className="h-4 w-4 mr-2" />
+                                                <span>{item.label}</span>
+                                                <ChevronDown className="h-4 w-4 ml-1" />
+                                            </Button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent align="start" className="w-full">
+                                            {inovasiSubItems.map((subItem) => (
+                                                <DropdownMenuItem key={subItem.href} asChild>
+                                                    <Link
+                                                        href={subItem.href}
+                                                        className="w-full cursor-pointer data-highlighted:bg-[#2a77a7] data-highlighted:text-white"
+                                                    >
+                                                        {subItem.label}
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                            ))}
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 );
