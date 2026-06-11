@@ -56,7 +56,7 @@ export function Header() {
         { href: "/idm", label: "IDM", icon: FileText },
         { href: "/sdgs", label: "SDGs", icon: Globe },
         { href: "/iot", label: "IoT", icon: Cpu },
-        { href: "/pengaduan", label: t("navigation.pengaduan"), icon: MessageSquare },
+        { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: t("navigation.pengaduan"), icon: MessageSquare, external: true },
     ];
 
     const pemerintahanSubItems = [
@@ -474,6 +474,21 @@ export function Header() {
                             }
 
                             // Render as regular link
+                            if ((item as any).external) {
+                                return (
+                                    <a
+                                        key={item.href}
+                                        href={item.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-4 py-2 text-sm text-white hover:bg-[#2a77a7] hover:text-white! rounded-md transition-colors cursor-pointer flex items-center"
+                                    >
+                                        <IconComponent className="h-4 w-4 mr-2" />
+                                        {item.label}
+                                    </a>
+                                );
+                            }
+
                             return (
                                 <Link
                                     key={item.href}

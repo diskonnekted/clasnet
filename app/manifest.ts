@@ -73,7 +73,7 @@ export default function manifest(): MetadataRoute.Manifest {
                 name: "Pengaduan",
                 short_name: "Pengaduan",
                 description: "Hubungi pemerintah kalurahan",
-                url: "/pengaduan",
+                url: "https://pondokrejo.sleman-desa.id/index.php/pengaduan",
                 icons: [{ src: "/favicon-96x96.png", sizes: "96x96" }],
             },
         ],

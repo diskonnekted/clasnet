@@ -231,17 +231,6 @@ export async function fetchOpenSIDWilayah() {
     });
 }
 
-/**
- * OpenSID pengaduan API helper
- */
-export async function fetchOpenSIDPengaduan() {
-    return opensidApi.get("/internal_api/pengaduan", {
-        cache: {
-            revalidate: 300, // 5 minutes for complaints
-            tags: ["opensid-data-pengaduan"],
-        },
-    });
-}
 
 /**
  * Standard API route handler with CORS support

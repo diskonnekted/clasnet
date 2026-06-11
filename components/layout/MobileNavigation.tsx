@@ -73,7 +73,12 @@ export function MobileNavigation() {
             icon: FileText,
             external: true,
         },
-        { href: "/pengaduan", label: translations.navigation.pengaduan, icon: MessageSquare },
+        {
+            href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan",
+            label: translations.navigation.pengaduan,
+            icon: MessageSquare,
+            external: true,
+        },
     ];
 
     // Main navigation items for mobile sidebar (in same order as desktop)
@@ -85,7 +90,7 @@ export function MobileNavigation() {
         { href: "/idm", label: "IDM", icon: FileText },
         { href: "/sdgs", label: "SDGs", icon: Globe },
         { href: "/iot", label: "IoT", icon: Monitor },
-        { href: "/pengaduan", label: translations.navigation.pengaduan, icon: MessageSquare },
+        { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: translations.navigation.pengaduan, icon: MessageSquare, external: true },
     ];
 
     // Additional items for sidebar
@@ -230,13 +235,16 @@ export function MobileNavigation() {
                             <div className="flex-1 overflow-y-auto">
                                 <div className="p-2">
                                     {/* Main Navigation Items - Same order as desktop */}
-                                    {mainSidebarNavItems.map((item: (typeof mainSidebarNavItems)[0]) => {
-                                        const active = isActive(item.href);
+                                    {mainSidebarNavItems.map((item: any) => {
+                                        const active = !item.external && isActive(item.href);
+                                        const Component = item.external ? "a" : Link;
+                                        const linkProps = item.external ? { target: "_blank", rel: "noopener noreferrer" } : { onClick: () => setIsSidebarOpen(false) };
+
                                         return (
-                                            <Link
+                                            <Component
                                                 key={item.href}
                                                 href={item.href}
-                                                onClick={() => setIsSidebarOpen(false)}
+                                                {...linkProps}
                                                 className={`flex items-center gap-3 px-3 py-3 text-sm rounded-md transition-all duration-200 mb-1 cursor-pointer ${
                                                     active
                                                         ? "bg-primary text-primary-foreground font-medium"
@@ -250,7 +258,7 @@ export function MobileNavigation() {
                                                 />
                                                 <span className="truncate">{item.label}</span>
                                                 {active && <div className="ml-auto w-2 h-2 bg-current rounded-full" />}
-                                            </Link>
+                                            </Component>
                                         );
                                     })}
 

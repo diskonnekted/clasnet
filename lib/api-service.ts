@@ -37,7 +37,7 @@ const DEFAULT_CONFIG: Required<Omit<ApiConfig, "baseUrl" | "cache">> = {
 
 // Common CORS headers
 export const CORS_HEADERS = {
-    "Access-Control-Allow-Origin": process.env.CORS_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || "https://pondokrejo.clasnet.co.id",
+    "Access-Control-Allow-Origin": process.env.CORS_ORIGIN || process.env.NEXT_PUBLIC_SITE_URL || "https://devoneclickpondokrejo.slemankab.go.id",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
 };
@@ -137,6 +137,11 @@ export class ApiService {
                 }
 
                 const data = await response.json();
+
+                // Strip 'links' property to prevent exposing internal backend URLs (VULN-04)
+                if (data && typeof data === 'object' && 'links' in data) {
+                    delete (data as any).links;
+                }
 
                 return {
                     success: true,
@@ -254,7 +259,7 @@ const LOCAL_BASE_URL =
     process.env.NEXT_PUBLIC_SITE_URL ||
     process.env.NEXTAUTH_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
-    (process.env.NODE_ENV === "development" ? "http://localhost:5091" : "https://pondokrejo.clasnet.co.id");
+    (process.env.NODE_ENV === "development" ? "http://localhost:5091" : "https://devoneclickpondokrejo.slemankab.go.id");
 
 export const localApi = new ApiService({
     baseUrl: LOCAL_BASE_URL,

@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL || "https://pondokrejo.clasnet.co.id"),
+    metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL || "https://devoneclickpondokrejo.slemankab.go.id"),
     title: "Portal Resmi Kalurahan Pondokrejo - Sleman, DIY",
     description:
         "Portal resmi Pemerintah Kalurahan Pondokrejo, Kabupaten Sleman, DIY. Informasi lengkap layanan publik, berita terkini, dan transparansi pemerintahan kalurahan.",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         description: "Portal resmi Pemerintah Kalurahan Pondokrejo, Kabupaten Sleman, DIY",
         type: "website",
         locale: "id_ID",
-        url: "https://pondokrejo.clasnet.co.id",
+        url: "https://devoneclickpondokrejo.slemankab.go.id",
         siteName: env.APP_NAME || "Portal Kalurahan Pondokrejo",
         images: [
             {

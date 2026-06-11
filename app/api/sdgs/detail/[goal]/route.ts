@@ -11,7 +11,13 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         return NextResponse.json({ error: "Invalid goal ID. Must be between 1 and 18." }, { status: 400 });
     }
 
-    const response = await fetchSDGSDetail(goalId, locationCode);
+    let response;
+    try {
+        response = await fetchSDGSDetail(goalId, locationCode);
+    } catch (err) {
+        console.error('[sdgs] error:', err);
+        return NextResponse.json({ error: 'Terjadi kesalahan internal. Coba lagi nanti.' }, { status: 500 });
+    }
 
     if (!response.success) {
         return NextResponse.json(

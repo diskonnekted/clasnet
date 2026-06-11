@@ -4,6 +4,11 @@ import { fetchOpenSIDKeuangan, createApiRouteHandler } from "@/lib/api-helpers";
 export const { GET, OPTIONS } = createApiRouteHandler(async (request: Request) => {
     const { searchParams } = new URL(request.url);
     const tahun = searchParams.get("tahun") || "2025";
+
+    if (!/^\d{4}$/.test(tahun)) {
+        return NextResponse.json({ error: "Parameter tahun tidak valid. Gunakan format: YYYY" }, { status: 400 });
+    }
+
     const mockFallbackData = [
         { type: "abpdes", id: "1", attributes: { tahun, pendapatan: [], belanja: [], pelaksanaan: [], laporan: `APBDes ${tahun} (Mock Data)` } },
     ];

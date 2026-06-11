@@ -29,19 +29,32 @@ export default function middleware(req: NextRequest) {
 
     if (!entry || now > entry.resetAt) {
         store.set(key, { count: 1, resetAt: now + windowMs });
-        return NextResponse.next();
+        const res = NextResponse.next();
+        res.headers.set("X-RateLimit-Limit", max.toString());
+        res.headers.set("X-RateLimit-Remaining", (max - 1).toString());
+        res.headers.set("X-RateLimit-Reset", Math.floor((now + windowMs) / 1000).toString());
+        return res;
     }
 
     if (entry.count >= max) {
         return new NextResponse(JSON.stringify({ success: false, error: "Too many requests" }), {
             status: 429,
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Content-Type": "application/json",
+                "X-RateLimit-Limit": max.toString(),
+                "X-RateLimit-Remaining": "0",
+                "X-RateLimit-Reset": Math.floor(entry.resetAt / 1000).toString()
+            },
         });
     }
 
     entry.count += 1;
     store.set(key, entry);
-    return NextResponse.next();
+    const res = NextResponse.next();
+    res.headers.set("X-RateLimit-Limit", max.toString());
+    res.headers.set("X-RateLimit-Remaining", (max - entry.count).toString());
+    res.headers.set("X-RateLimit-Reset", Math.floor(entry.resetAt / 1000).toString());
+    return res;
 }
 
 export const config = {

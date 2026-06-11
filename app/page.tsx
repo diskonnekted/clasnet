@@ -28,7 +28,7 @@ function getServerSideData() {
                 description: "Meningkatkan Kesejahteraan Warga Melalui Program Ekonomi",
                 image: "/uploads/sliders/peternakan.avif",
                 ctaText: getServerTranslation("hero.ctaHubungiKami"),
-                ctaLink: "/pengaduan",
+                ctaLink: "https://pondokrejo.sleman-desa.id/index.php/pengaduan",
             },
             {
                 id: "4",
@@ -116,7 +116,7 @@ function getServerSideData() {
                 icon: "Phone",
                 label: getServerTranslation("quickLinks.kontakDarurat"),
                 description: getServerTranslation("quickLinks.kontakDaruratDesk"),
-                href: "/pengaduan",
+                href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan",
                 color: "bg-[#0a1a36]",
             },
         ],

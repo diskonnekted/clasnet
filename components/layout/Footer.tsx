@@ -16,12 +16,12 @@ export function Footer() {
         { href: "/profil/sejarah", label: "Sejarah Kalurahan" },
         { href: "/pemerintahan", label: t("navigation.pemerintahan") },
         { href: "/keuangan", label: t("navigation.keuangan") },
-        { href: "/pengaduan", label: t("navigation.kontak") },
+        { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: t("navigation.kontak"), external: true },
     ];
 
     const layananLinks = [
         { href: "https://pondokrejo.sleman-desa.id/layanan-mandiri", label: "Layanan Mandiri", external: true },
-        { href: "/pengaduan", label: "Pengaduan Masyarakat" },
+        { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: "Pengaduan Masyarakat", external: true },
         { href: "/iot", label: "IoT Monitoring" },
         { href: "/statistik", label: "Data Statistik" },
     ];
