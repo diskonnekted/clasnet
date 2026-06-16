@@ -58,64 +58,64 @@
     --radius: 0.625rem;
 
     /* Base colors */
-    --background: #eeeeee;
-    --foreground: #001a5e;
+    --background: #f8f9fc;
+    --foreground: #27262E;
     --card: #ffffff;
-    --card-foreground: #001a5e;
+    --card-foreground: #27262E;
     --popover: #ffffff;
-    --popover-foreground: #001a5e;
+    --popover-foreground: #27262E;
 
-    /* Primary colors - Persian Blue */
-    --primary: #0038BD;
+    /* Primary colors - Charcoal Navy */
+    --primary: #27262E;
     --primary-foreground: #ffffff;
 
-    /* Secondary colors - Carrot */
-    --secondary: #EF8E01;
+    /* Secondary colors - Sandy Tan */
+    --secondary: #E19C63;
     --secondary-foreground: #ffffff;
 
-    /* Accent colors - Platinum/Light */
-    --accent: #e2e8f0;
-    --accent-foreground: #0038BD;
+    /* Accent colors - Dusty Steel Blue */
+    --accent: #8BA5BE;
+    --accent-foreground: #ffffff;
 
     /* Muted colors */
-    --muted: #e2e8f0;
-    --muted-foreground: #64748b;
+    --muted: #e8ecef;
+    --muted-foreground: #6f8498;
 
     /* Status colors */
-    --destructive: #ef4444;
+    --destructive: #f87171;
     --destructive-foreground: #ffffff;
 
     /* UI elements */
-    --border: #cbd5e1;
+    --border: #d0d9e0;
     --input: #ffffff;
-    --ring: #EF8E01;
+    --ring: #E19C63;
 
     /* Chart colors */
-    --chart-1: #0038BD;
-    --chart-2: #EF8E01;
-    --chart-3: #2563eb;
-    --chart-4: #f59e0b;
-    --chart-5: #64748b;
+    --chart-1: #27262E;
+    --chart-2: #E19C63;
+    --chart-3: #8BA5BE;
+    --chart-4: #fbbf24;
+    --chart-5: #6f8498;
 
     /* Sidebar colors */
     --sidebar: #ffffff;
-    --sidebar-foreground: #001a5e;
-    --sidebar-primary: #0038BD;
+    --sidebar-foreground: #27262E;
+    --sidebar-primary: #27262E;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #fff7ed;
-    --sidebar-accent-foreground: #EF8E01;
-    --sidebar-border: #cbd5e1;
-    --sidebar-ring: #EF8E01;
+    --sidebar-accent: #f9ebe0;
+    --sidebar-accent-foreground: #E19C63;
+    --sidebar-border: #d0d9e0;
+    --sidebar-ring: #E19C63;
 
     /* Village specific colors - kept for backward compatibility if any components missed */
     --village-success: #22c55e;
-    --village-warning: #f59e0b;
-    --village-danger: #ef4444;
-    --village-info: #3b82f6;
+    --village-warning: #fbbf24;
+    --village-danger: #f87171;
+    --village-info: #8BA5BE;
 
     /* Text colors for dark/light contrast */
     --text-normal: #ffffff;
-    --text-hover: #fcd34d;
+    --text-hover: #f3d7c0;
 }
 
 @layer base {

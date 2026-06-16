@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orion CMS - Just another Orion site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+                tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Javanese&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            padding-top: 80px;
+        }
+        @media (min-width: 768px) {
+            body {
+                padding-top: 88px;
+            }
+        }
+        .font-jawa {
+            font-family: 'Noto Sans Javanese', ui-serif, Georgia, 'Times New Roman', serif;
+            font-size: 1.35rem;
+            line-height: 1.9;
+        }
+        .prose {
+            color: #0f172a;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .prose p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .prose h1,
+        .prose h2,
+        .prose h3,
+        .prose h4 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: #0f172a;
+        }
+        .prose h1 {
+            font-size: clamp(1.875rem, 1.5rem + 1vw, 2.25rem);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        .prose h2 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .prose h3 {
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .prose h4 {
+            font-size: 1.125rem;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .prose h2 + p,
+        .prose h3 + p,
+        .prose h4 + p {
+            margin-top: 0.5rem;
+        }
+        .prose ul,
+        .prose ol {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 1.75rem;
+        }
+        .prose ul {
+            list-style-type: disc;
+        }
+        .prose ol {
+            list-style-type: decimal;
+        }
+        .prose li {
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .prose img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .prose blockquote {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid #e2e8f0;
+            color: #475569;
+            font-style: italic;
+        }
+        .prose strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        .prose a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+    </style>
+    <meta name="generator" content="Orion CMS by Diskonnekted" />
+<link rel="icon" type="image/png" href="https://orionapp.clasnet.co.id/assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="https://orionapp.clasnet.co.id/assets/img/favicon.png" />
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="https://orionapp.clasnet.co.id" class="text-2xl font-bold text-brand-700 flex items-center gap-3">
+            <img src="https://orionapp.clasnet.co.id/assets/img/logo.png" alt="Orion CMS" class="h-10 w-auto">
+            <span class="tracking-tight">Orion Promo</span>
+        </a>
+        
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="https://orionapp.clasnet.co.id" class="text-slate-600 hover:text-brand-600 font-medium transition">Beranda</a>
+            <a href="https://orionapp.clasnet.co.id?page=download" class="text-slate-600 hover:text-brand-600 font-medium transition">Download</a>
+            <a href="https://orionapp.clasnet.co.id?page=documentation" class="text-slate-600 hover:text-brand-600 font-medium transition">Dokumentasi</a>
+            <a href="https://orionapp.clasnet.co.id#features" class="text-slate-600 hover:text-brand-600 font-medium transition">Fitur</a>
+            <a href="https://orionapp.clasnet.co.id?page=news" class="text-slate-600 hover:text-brand-600 font-medium transition">Berita</a>
+            <a href="https://orionapp.clasnet.co.id/orion-admin/" class="px-5 py-2 bg-brand-600 text-white rounded-full font-semibold hover:bg-brand-700 transition shadow-lg shadow-brand-500/30">
+                Login Admin
+            </a>
+        </div>
+        
+        <!-- Mobile Menu Button (Simple implementation) -->
+        <button class="md:hidden text-slate-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+</nav>
+<!-- Hero Section -->
+<section class="pt-32 pb-20 bg-gradient-to-br from-brand-50 via-white to-blue-50 overflow-hidden relative">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <img src="https://orionapp.clasnet.co.id/assets/img/hero-bg.svg" alt="Pattern" class="absolute inset-0 w-full h-full object-cover opacity-40">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Hero Content -->
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-brand-100 text-brand-600 text-sm font-semibold mb-6 shadow-sm animate-fade-in-up">
+                    <span class="flex h-2 w-2 relative mr-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    Orion CMS v1.0 Resmi Dirilis
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Bangun Web <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600">Tanpa Batas</span>
+                </h1>
+                
+                <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    Platform manajemen konten modern yang menggabungkan performa tinggi, keamanan tingkat lanjut, dan kemudahan penggunaan untuk developer maupun pemula.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="https://orionapp.clasnet.co.id/download/" class="px-8 py-4 bg-brand-600 text-white rounded-full font-bold text-lg hover:bg-brand-700 transition shadow-xl shadow-brand-500/20 transform hover:-translate-y-1 flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Download Gratis
+                    </a>
+                    <a href="#features" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-bold text-lg hover:bg-slate-50 transition hover:border-slate-300 flex items-center justify-center">
+                        Pelajari Fitur
+                    </a>
+                </div>
+                
+                <div class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-500 font-medium">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Open Source
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Tanpa Biaya Bulanan
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Visual -->
+            <div class="lg:w-1/2 relative perspective-1000">
+                <div class="relative rounded-xl bg-white shadow-2xl border border-slate-200 overflow-hidden transform rotate-y-6 rotate-x-6 hover:rotate-0 transition-all duration-700 ease-out p-2">
+                    <div class="absolute top-0 left-0 w-full h-8 bg-slate-100 border-b border-slate-200 flex items-center px-4 gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        <div class="ml-4 flex-1 h-4 bg-white rounded-md border border-slate-200 text-[10px] flex items-center px-2 text-slate-400 font-mono">
+                            https://your-orion-site.com/admin
+                        </div>
+                    </div>
+                    <div class="mt-8 rounded-lg overflow-hidden border border-slate-100">
+                         <!-- Fallback visual using available asset -->
+                        <img src="https://orionapp.clasnet.co.id/assets/img/CMS-ORION-ONE.png" alt="Orion Dashboard" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+                
+                <!-- Floating Elements -->
+                <div class="absolute -bottom-10 -left-10 bg-white p-4 rounded-xl shadow-xl border border-slate-100 animate-float">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-900">System Updated</div>
+                            <div class="text-xs text-slate-500">Just now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="absolute -top-10 -right-5 bg-white p-4 rounded-xl shadow-xl border border-slate-100 animate-float animation-delay-1000">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-900">New Plugin Added</div>
+                            <div class="text-xs text-slate-500">2 mins ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-10 bg-slate-900 text-white border-y border-slate-800">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-800">
+            <div>
+                <div class="text-4xl font-bold text-brand-400 mb-1">10k+</div>
+                <div class="text-slate-400 text-sm font-medium uppercase tracking-wider">Downloads</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-brand-400 mb-1">50+</div>
+                <div class="text-slate-400 text-sm font-medium uppercase tracking-wider">Themes</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-brand-400 mb-1">100+</div>
+                <div class="text-slate-400 text-sm font-medium uppercase tracking-wider">Plugins</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-brand-400 mb-1">99%</div>
+                <div class="text-slate-400 text-sm font-medium uppercase tracking-wider">Satisfaction</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Detailed Features -->
+<section id="features" class="py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-6">
+        <!-- Feature 1 -->
+        <div class="flex flex-col md:flex-row items-center gap-16 mb-24">
+            <div class="md:w-1/2 relative">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand-100 to-purple-100 rounded-full filter blur-3xl opacity-50 transform -translate-x-10"></div>
+                <img src="https://orionapp.clasnet.co.id/assets/img/magazine.png" alt="Theme Showcase" class="relative rounded-2xl shadow-2xl border border-slate-100 transform hover:scale-105 transition duration-500">
+            </div>
+            <div class="md:w-1/2">
+                <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Desain Memukau, Tanpa Ribet</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    Pilih dari puluhan tema profesional yang siap pakai. Kustomisasi tampilan website Anda dengan mudah tanpa harus menyentuh kode sedikitpun. Responsif di semua perangkat.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-slate-600">
+                        <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Drag & Drop Layout Builder
+                    </li>
+                    <li class="flex items-center text-slate-600">
+                        <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Mobile Friendly & SEO Optimized
+                    </li>
+                    <li class="flex items-center text-slate-600">
+                        <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Unlimited Color Customization
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="flex flex-col md:flex-row-reverse items-center gap-16">
+            <div class="md:w-1/2 relative">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-100 to-green-100 rounded-full filter blur-3xl opacity-50 transform translate-x-10"></div>
+                <img src="https://orionapp.clasnet.co.id/assets/img/smartvillage.png" alt="Plugin System" class="relative rounded-2xl shadow-2xl border border-slate-100 transform hover:scale-105 transition duration-500">
+            </div>
+            <div class="md:w-1/2">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ekosistem Plugin yang Kuat</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    Perluas fungsionalitas website Anda dengan ribuan plugin yang tersedia. Dari toko online, forum diskusi, hingga sistem booking, semuanya ada.
+                </p>
+                <div class="flex gap-4">
+                    <div class="p-4 bg-slate-50 rounded-lg text-center w-32 border border-slate-100">
+                        <div class="text-2xl font-bold text-brand-600 mb-1">500+</div>
+                        <div class="text-xs text-slate-500 font-medium">Free Plugins</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg text-center w-32 border border-slate-100">
+                        <div class="text-2xl font-bold text-purple-600 mb-1">200+</div>
+                        <div class="text-xs text-slate-500 font-medium">Premium Addons</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Theme Showcase Carousel -->
+<section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Galeri Tema Pilihan</h2>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">Jelajahi berbagai kemungkinan desain yang bisa Anda terapkan.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Theme Card School -->
+            <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                <img src="https://orionapp.clasnet.co.id/assets/img/school.png" alt="Orion School" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">Orion School</h3>
+                        <p class="text-slate-300 text-sm">Academic & Education</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Theme Card Promo -->
+            <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                <img src="https://orionapp.clasnet.co.id/assets/img/promo.png" alt="Orion Promo" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">Orion Promo</h3>
+                        <p class="text-slate-300 text-sm">Marketing & Landing Page</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Theme Card PMC -->
+            <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                <img src="pmc.jpeg" alt="Orion PMC" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">Orion PMC</h3>
+                        <p class="text-slate-300 text-sm">Private Military Contractor Theme</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Theme Card 1 -->
+            <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                <img src="https://orionapp.clasnet.co.id/assets/img/one.png" alt="Theme One" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">Orion One</h3>
+                        <p class="text-slate-300 text-sm">Multipurpose Theme</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Theme Card 2 -->
+             <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                <img src="https://orionapp.clasnet.co.id/assets/img/portfolio.png" alt="Theme Portfolio" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">Creative Portfolio</h3>
+                        <p class="text-slate-300 text-sm">For Designers & Artists</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Theme Card 3 -->
+             <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                <img src="https://orionapp.clasnet.co.id/assets/img/magazine.png" alt="Theme Magazine" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">News Magazine</h3>
+                        <p class="text-slate-300 text-sm">Content Heavy Sites</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Theme Card Shop -->
+             <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                <img src="https://orionapp.clasnet.co.id/assets/img/shop.png" alt="Orion Shop" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-bold text-xl mb-1">Orion Shop</h3>
+                        <p class="text-slate-300 text-sm">E-Commerce Solution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="https://orionapp.clasnet.co.id/?page=download" class="inline-flex items-center font-bold text-brand-600 hover:text-brand-700 text-lg">
+                Lihat Semua Tema
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Latest News -->
+<section id="news" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Berita & Artikel</h2>
+                <p class="text-slate-600">Tips, trik, dan update seputar pengembangan web.</p>
+            </div>
+            <div class="md:text-right">
+                <a href="index.php?page=news" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700">
+                    Lihat Semua Berita
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                    <img src="https://orionapp.clasnet.co.id/orion-content/uploads/1772101634_feat_pexels-souvenirpixels-417074.jpg" alt="Tanggung Jawab Moral Pengembang" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-600 uppercase tracking-wide">
+                        News
+                    </div>
+                </div>
+                
+                <div class="p-8 flex-grow flex flex-col">
+                    <div class="text-sm text-slate-500 mb-3 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        22 Feb 2026                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-brand-600 transition">
+                        <a href="?p=51">
+                            Tanggung Jawab Moral Pengembang                        </a>
+                    </h3>
+                    <p class="text-slate-600 mb-4 line-clamp-3 flex-grow leading-relaxed">
+                        Membentuk Masa Depan dengan Kode EtikDi era digital ini, para pengembang program bukan lagi sekadar pembuat alat; mereka adalah arsitek&hellip;                    </p>
+                    <a href="?p=51" class="text-brand-600 font-bold hover:text-brand-700 inline-flex items-center mt-auto uppercase text-sm tracking-wide">
+                        Baca Selengkapnya
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                    <img src="https://orionapp.clasnet.co.id/orion-content/uploads/1772101649_feat_pexels-luisdelrio-15286.jpg" alt="Kode Etik Pengembang" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-600 uppercase tracking-wide">
+                        News
+                    </div>
+                </div>
+                
+                <div class="p-8 flex-grow flex flex-col">
+                    <div class="text-sm text-slate-500 mb-3 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        22 Feb 2026                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-brand-600 transition">
+                        <a href="?p=50">
+                            Kode Etik Pengembang                        </a>
+                    </h3>
+                    <p class="text-slate-600 mb-4 line-clamp-3 flex-grow leading-relaxed">
+                        Pasal 1: Integritas Logika (Satya Wacana)Seorang pengembang wajib menjunjung tinggi kejujuran dalam setiap baris kode yang ditulisnya.1.1. Dilarang keras menulis&hellip;                    </p>
+                    <a href="?p=50" class="text-brand-600 font-bold hover:text-brand-700 inline-flex items-center mt-auto uppercase text-sm tracking-wide">
+                        Baca Selengkapnya
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                    <img src="https://orionapp.clasnet.co.id/orion-content/uploads/1772101669_feat_pexels-maxfrancis-2246476.jpg" alt="Manifesto Pengembang" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-600 uppercase tracking-wide">
+                        News
+                    </div>
+                </div>
+                
+                <div class="p-8 flex-grow flex flex-col">
+                    <div class="text-sm text-slate-500 mb-3 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        22 Feb 2026                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-brand-600 transition">
+                        <a href="?p=49">
+                            Manifesto Pengembang                        </a>
+                    </h3>
+                    <p class="text-slate-600 mb-4 line-clamp-3 flex-grow leading-relaxed">
+                        Manifesto ini adalah kodifikasi etika bagi para buruh digital yang memandang baris kode sebagai ladang pengabdian. Menggabungkan prinsip Clean Code&hellip;                    </p>
+                    <a href="?p=49" class="text-brand-600 font-bold hover:text-brand-700 inline-flex items-center mt-auto uppercase text-sm tracking-wide">
+                        Baca Selengkapnya
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                    <img src="https://orionapp.clasnet.co.id/orion-content/uploads/1772101693_feat_pexels-eberhardgross-443446.jpg" alt="Makna Manfaat Bagi Pengembang Program" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-600 uppercase tracking-wide">
+                        News
+                    </div>
+                </div>
+                
+                <div class="p-8 flex-grow flex flex-col">
+                    <div class="text-sm text-slate-500 mb-3 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        22 Feb 2026                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-brand-600 transition">
+                        <a href="?p=48">
+                            Makna Manfaat Bagi Pengembang Program                        </a>
+                    </h3>
+                    <p class="text-slate-600 mb-4 line-clamp-3 flex-grow leading-relaxed">
+                        Dalam ekosistem digital, "manfaat" bukan sekadar angka di saldo rekening atau baris kode yang berjalan tanpa error. Manfaat hidup seorang&hellip;                    </p>
+                    <a href="?p=48" class="text-brand-600 font-bold hover:text-brand-700 inline-flex items-center mt-auto uppercase text-sm tracking-wide">
+                        Baca Selengkapnya
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                    <img src="https://orionapp.clasnet.co.id/orion-content/uploads/1772101715_feat_pexels-lum3n-44775-167699.jpg" alt="Lintang Waluku: Menanam Algoritma di Langit Digital" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-600 uppercase tracking-wide">
+                        News
+                    </div>
+                </div>
+                
+                <div class="p-8 flex-grow flex flex-col">
+                    <div class="text-sm text-slate-500 mb-3 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        22 Feb 2026                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-brand-600 transition">
+                        <a href="?p=47">
+                            Lintang Waluku: Menanam Algoritma di Langit Digital                        </a>
+                    </h3>
+                    <p class="text-slate-600 mb-4 line-clamp-3 flex-grow leading-relaxed">
+                        Bagi leluhur di tanah Jawa, langit bukan sekadar hamparan gelap yang sunyi. Ia adalah kitab semesta yang terbuka. Di sana,&hellip;                    </p>
+                    <a href="?p=47" class="text-brand-600 font-bold hover:text-brand-700 inline-flex items-center mt-auto uppercase text-sm tracking-wide">
+                        Baca Selengkapnya
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                    <img src="https://orionapp.clasnet.co.id/orion-content/uploads/1772043843_feat_1.-Furniture-Kursi-Alana-Sofa-3-Seater.jpg" alt="Sofa Minimalis 3 Seater" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-600 uppercase tracking-wide">
+                        News
+                    </div>
+                </div>
+                
+                <div class="p-8 flex-grow flex flex-col">
+                    <div class="text-sm text-slate-500 mb-3 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        08 Feb 2026                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-brand-600 transition">
+                        <a href="?p=37">
+                            Sofa Minimalis 3 Seater                        </a>
+                    </h3>
+                    <p class="text-slate-600 mb-4 line-clamp-3 flex-grow leading-relaxed">
+                        &nbsp;Sofa nyaman untuk ruang keluarga.                    </p>
+                    <a href="?p=37" class="text-brand-600 font-bold hover:text-brand-700 inline-flex items-center mt-auto uppercase text-sm tracking-wide">
+                        Baca Selengkapnya
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+                    </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-24 bg-brand-900 relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://orionapp.clasnet.co.id/assets/img/promo.png" alt="Background" class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-900/80 via-brand-800/70 to-purple-900/80"></div>
+    </div>
+
+    <!-- Abstract Shapes -->
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl z-0"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-500 opacity-20 rounded-full blur-3xl z-0"></div>
+    
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Mulai Website Impian Anda</h2>
+        <p class="text-xl text-brand-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Download Orion CMS sekarang dan rasakan kemudahan membangun website profesional dalam hitungan menit.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://orionapp.clasnet.co.id/download/" class="px-10 py-5 bg-white text-brand-600 rounded-full font-bold text-xl hover:bg-brand-50 transition shadow-2xl shadow-black/20 transform hover:-translate-y-1">
+                Download Gratis
+            </a>
+            <a href="#" class="px-10 py-5 bg-transparent border-2 border-white text-white rounded-full font-bold text-xl hover:bg-white/10 transition">
+                Dokumentasi
+            </a>
+        </div>
+        <p class="mt-8 text-sm text-brand-200 opacity-80">
+            Versi 1.0.0 • Berlisensi MIT • Didukung Komunitas
+        </p>
+    </div>
+</section>
+<footer class="bg-slate-900 text-slate-300 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div class="mb-6 md:mb-0 text-left">
+                <img src="https://orionapp.clasnet.co.id/assets/img/orion-light.png" alt="Orion CMS" class="h-16 mb-4 block">
+                <h3 class="text-2xl font-bold text-white mb-2">Orion CMS</h3>
+                <p class="text-slate-400 max-w-xs">Platform manajemen konten modern yang dirancang super ringan dan difokuskan pada kecepatan.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://orionapp.clasnet.co.id/?page=documentation" class="hover:text-brand-400 transition">Dokumentasi</a>
+                <a href="https://github.com/diskonnekted/Orion-CMS" class="hover:text-brand-400 transition">GitHub</a>
+            </div>
+        </div>
+        <div class="mt-8">
+            <nav class="flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+                <a href="https://orionapp.clasnet.co.id/?page=About" class="hover:text-brand-400 transition">About</a>
+                <a href="https://orionapp.clasnet.co.id/?page=Manual" class="hover:text-brand-400 transition">Manual</a>
+                <a href="https://orionapp.clasnet.co.id/?page=Privacy" class="hover:text-brand-400 transition">Privacy Policy</a>
+                <a href="https://orionapp.clasnet.co.id/?page=Terms" class="hover:text-brand-400 transition">Terms</a>
+            </nav>
+        </div>
+        <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-500">
+            &copy; 2026 Orion CMS. All rights reserved. ❤️ From <a href="https://www.clasnet.co.id" class="text-brand-400 hover:text-brand-300 transition">Clasnet</a> to You.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

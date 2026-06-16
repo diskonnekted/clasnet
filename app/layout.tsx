@@ -8,6 +8,7 @@ import { MobileNavigationWrapper } from "@/components/layout/MobileNavigationWra
 import { CustomToast } from "@/components/ui/custom/CustomToast";
 import { BackToTop } from "@/components/ui/custom/BackToTop";
 import { PWAInstallPrompt } from "@/components/ui/custom/PWAInstallPrompt";
+import { ThemeSwitcher } from "@/components/ui/custom/ThemeSwitcher";
 import { env } from "process";
 
 const geistSans = Geist({
@@ -21,36 +22,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL || "https://devoneclickpondokrejo.slemankab.go.id"),
-    title: "Portal Resmi Kalurahan Pondokrejo - Sleman, DIY",
+    metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL || "https://www.clasnet.co.id"),
+    title: "Clasnet - Arsitek Transformasi Digital & Inovasi IoT Indonesia",
     description:
-        "Portal resmi Pemerintah Kalurahan Pondokrejo, Kabupaten Sleman, DIY. Informasi lengkap layanan publik, berita terkini, dan transparansi pemerintahan kalurahan.",
+        "Clasnet adalah perusahaan teknologi terdepan di Indonesia yang memposisikan diri sebagai Arsitek Transformasi Digital & Inovasi IoT.",
     keywords:
-        "Kalurahan Pondokrejo, Sleman, DIY, pemerintahan kalurahan, layanan publik, berita kalurahan, transparansi, APBDes",
-    authors: [{ name: "Pemerintah Kalurahan Pondokrejo" }],
+        "Clasnet, Transformasi Digital, IoT Indonesia, Orion CMS, Orion Versa, Smart Village, Sistem Informasi Desa",
+    authors: [{ name: "Clasnet" }],
     openGraph: {
-        title: "Portal Resmi Kalurahan Pondokrejo",
-        description: "Portal resmi Pemerintah Kalurahan Pondokrejo, Kabupaten Sleman, DIY",
+        title: "Clasnet - Arsitek Transformasi Digital & Inovasi IoT Indonesia",
+        description: "Clasnet adalah perusahaan teknologi terdepan di Indonesia yang memposisikan diri sebagai Arsitek Transformasi Digital & Inovasi IoT.",
         type: "website",
         locale: "id_ID",
-        url: "https://devoneclickpondokrejo.slemankab.go.id",
-        siteName: env.APP_NAME || "Portal Kalurahan Pondokrejo",
+        url: "https://www.clasnet.co.id",
+        siteName: env.APP_NAME || "Clasnet",
         images: [
             {
                 url: "/favicon-512x512.png",
                 width: 512,
                 height: 512,
-                alt: "Kalurahan Pondokrejo Logo",
+                alt: "Clasnet Logo",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Portal Resmi Kalurahan Pondokrejo",
-        description: "Portal resmi Pemerintah Kalurahan Pondokrejo, Kabupaten Sleman, DIY",
+        title: "Clasnet - Arsitek Transformasi Digital & Inovasi IoT Indonesia",
+        description: "Clasnet adalah perusahaan teknologi terdepan di Indonesia yang memposisikan diri sebagai Arsitek Transformasi Digital & Inovasi IoT.",
     },
     other: {
-        "msapplication-TileColor": "#39a2cf",
+        "msapplication-TileColor": "#27262E",
         "msapplication-TileImage": "/favicon-144x144.png",
     },
     icons: {
@@ -72,7 +73,7 @@ export function generateViewport() {
         width: "device-width",
         initialScale: 1,
         maximumScale: 1,
-        themeColor: "#39a2cf",
+        themeColor: "#27262E",
     };
 }
 
@@ -90,6 +91,7 @@ export default function RootLayout({
                     <Footer />
                 </div>
                 <MobileNavigationWrapper />
+                <ThemeSwitcher />
                 <CustomToast />
                 <BackToTop />
                 <PWAInstallPrompt />

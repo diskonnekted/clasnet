@@ -10,65 +10,53 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Pondokrejo Village Official Colors
+        // Clasnet Official Colors
         primary: {
-          DEFAULT: "#39a2cf", // Header BG
-          50: "#e6f0fa",
-          100: "#cce0f5",
-          200: "#99c2eb",
-          300: "#66a3e0",
-          400: "#3385d6",
-          500: "#3eafdf", // Hero BG
-          600: "#39a2cf", // Main primary color (Header)
-          700: "#0a4766",
-          800: "#08374c",
-          900: "#052632",
-          950: "#03161d",
+          DEFAULT: "#27262E", // Charcoal Navy
+          100: "#d4d4d5",
+          200: "#a9a9ac",
+          300: "#7e7e82",
+          400: "#535259",
+          500: "#27262E",
+          600: "#1f1e25",
+          700: "#17171c",
+          800: "#100f12",
+          900: "#080809",
         },
         secondary: {
-          DEFAULT: "#3eafdf", // Hero BG
-          50: "#e6f2fa",
-          100: "#cce5f5",
-          200: "#99cceb",
-          300: "#66b2e0",
-          400: "#3399d6",
-          500: "#3eafdf", // Main secondary color (Hero)
-          600: "#39a2cf",
-          700: "#0a4766",
-          800: "#08374c",
-          900: "#052632",
-          950: "#03161d",
+          DEFAULT: "#E19C63", // Sandy Tan
+          100: "#f9ebe0",
+          200: "#f3d7c0",
+          300: "#ecc3a1",
+          400: "#e6af82",
+          500: "#E19C63",
+          600: "#b47c4f",
+          700: "#875d3b",
+          800: "#5a3e28",
+          900: "#2d1f14",
         },
         accent: {
-          DEFAULT: "#0a4661", // Footer BG
-          50: "#e6f0f5",
-          100: "#cce0eb",
-          200: "#99c2d7",
-          300: "#66a3c2",
-          400: "#3385ae",
-          500: "#0a4661", // Main accent color (Footer)
-          600: "#062942",
-          700: "#041d2f",
-          800: "#03121c",
-          900: "#010609",
-          950: "#000000",
+          DEFAULT: "#8BA5BE", // Dusty Steel Blue
+          100: "#e8ecef",
+          200: "#d0d9e0",
+          300: "#b9c6d0",
+          400: "#a2b3c1",
+          500: "#8BA5BE",
+          600: "#6f8498",
+          700: "#536372",
+          800: "#38424c",
+          900: "#1c2126",
         },
-        background: "#f8f9fc", // Dasar halaman bersih - Wordpress background
-        surface: "#e6eaf3", // Latar kartu/komponen - Wordpress surface
-        "text-dark": "#000000", // Teks utama
-        "text-light": "#ffffff", // Teks di atas latar gelap
-        "text-light-hover": "#ddf0ff", // Teks hover di atas latar gelap
-        success: "#22c55e", // Status sukses
-        warning: "#fbbf24", // Peringatan
-        danger: "#f87171", // Kesalahan
-        info: "#60a5fa", // Informasi
-        // Additional village theme colors
-        "village-green": {
-          DEFAULT: "#39a2cf",
-          dark: "#3eafdf",
-          darker: "#0a4661",
-        },
-        "village-blue": "#3eafdf", // Untuk dekorasi (Hero blue)
+        background: "#f8f9fc", 
+        surface: "#ffffff", 
+        "text-dark": "#27262E", 
+        "text-light": "#ffffff", 
+        "text-light-hover": "#e8ecef", 
+        success: "#22c55e", 
+        warning: "#fbbf24", 
+        danger: "#f87171", 
+        info: "#60a5fa", 
+        
         // Override default colors for consistency
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

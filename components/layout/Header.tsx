@@ -22,6 +22,7 @@ import {
     Shield,
     CreditCard,
     GraduationCap,
+    Lightbulb,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -45,120 +46,20 @@ export function Header() {
     const [searchQuery, setSearchQuery] = useState("");
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const mainNavItems = [
-        { href: "/", label: t("navigation.beranda"), icon: Home },
-        { href: "/pemerintahan", label: t("navigation.pemerintahan"), icon: Building2 },
-        { href: "/informasi", label: "Informasi", icon: Newspaper },
-        { href: "/statistik", label: "Statistik", icon: BarChart3 },
-        { href: "/inovasi", label: "Inovasi", icon: Sparkles },
-        { href: "/ppid", label: "PPID", icon: BookCheck },
-        { href: "/idm", label: "IDM", icon: FileText },
-        { href: "/sdgs", label: "SDGs", icon: Globe },
-        { href: "/iot", label: "IoT", icon: Cpu },
-        { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: t("navigation.pengaduan"), icon: MessageSquare, external: true },
-    ];
-
-    const pemerintahanSubItems = [
-        { href: "/profil", label: t("navigation.profilDesa") },
-        { href: "/wilayah-administratif", label: "Wilayah Administratif" },
-        { href: "/keuangan", label: t("navigation.keuangan") },
-        { href: "/pembangunan", label: t("navigation.pembangunan") },
-        { href: "/bumdes", label: t("navigation.bumdes") },
-    ];
-
-    const informasiSubItems = [
-        { href: "/berita", label: t("navigation.berita") },
-        { href: "/pengumuman", label: "Pengumuman" },
-        { href: "/kegiatan", label: t("navigation.kegiatan") },
-    ];
-
-    const inovasiSubItems = [
-        { href: "/posyandu", label: "Posyandu Digital" },
-        { href: "/pustaka", label: "Perpustakaan Digital" },
-        { href: "/lapak-digital", label: "Lapak Digital" },
-        { href: "/ttg", label: "Teknologi Tepat Guna" },
-        { href: "/komunitas", label: "Komunitas" },
-        { href: "/analitik", label: "Analitik" },
-    ];
-
-    // Categorized statistik sub-items
-    const statistikCategories = [
-        {
-            category: "Demografi",
-            icon: Users,
-            items: [
-                { href: "/statistik/penduduk", label: "Penduduk" },
-                { href: "/statistik/umur", label: "Umur" },
-                { href: "/statistik/kelompok-usia", label: "Kelompok Usia" },
-                { href: "/statistik/hubungan-dalam-kk", label: "Hubungan Dalam KK" },
-                { href: "/statistik/kewarganegaraan", label: "Kewarganegaraan" },
-                { href: "/statistik/etnis", label: "Etnis" },
-                { href: "/statistik/kelas-sosial", label: "Kelas Sosial" },
-            ],
-        },
-        {
-            category: "Pendidikan",
-            icon: GraduationCap,
-            items: [
-                { href: "/statistik/pendidikan", label: "Kelompok Pendidikan" },
-                { href: "/statistik/pendidikan-ditempuh", label: "Pendidikan Ditempuh" },
-            ],
-        },
-        {
-            category: "Kesehatan & KB",
-            icon: Heart,
-            items: [
-                { href: "/statistik/stunting", label: "Stunting" },
-                { href: "/statistik/hamil", label: "Ibu Hamil" },
-                { href: "/statistik/kontrasepsi-kb", label: "Kontrasepsi/KB" },
-                { href: "/statistik/disabilitas", label: "Disabilitas" },
-                { href: "/statistik/penyakit", label: "Sakit/Penyakit" },
-            ],
-        },
-        {
-            category: "Pernikahan & Keluarga",
-            icon: Heart,
-            items: [
-                { href: "/statistik/perkawinan", label: "Perkawinan" },
-                { href: "/statistik/buku-nikah", label: "Buku Nikah" },
-                { href: "/statistik/kepemilikan-akta-kematian", label: "Kepemilikan Akta Kematian" },
-            ],
-        },
-        {
-            category: "Sosial & Bantuan",
-            icon: Heart,
-            items: [
-                { href: "/statistik/penerima-bantuan-penduduk", label: "Penerima Bantuan Penduduk" },
-                { href: "/statistik/penerima-bantuan-keluarga", label: "Penerima Bantuan Keluarga" },
-                { href: "/statistik/bdt", label: "BDT" },
-            ],
-        },
-        {
-            category: "Administrasi",
-            icon: CreditCard,
-            items: [
-                { href: "/statistik/ktp-elektronik", label: "KTP Elektronik" },
-                { href: "/statistik/kepemilikan-kia", label: "Kepemilikan KIA" },
-                { href: "/statistik/dpt", label: "DPT" },
-            ],
-        },
-        {
-            category: "Jaminan Sosial",
-            icon: Shield,
-            items: [
-                { href: "/statistik/bpjs", label: "BPJS" },
-                { href: "/statistik/bpjs-ketenagakerjaan", label: "BPJS Ketenagakerjaan" },
-            ],
-        },
-        {
-            category: "Lainnya",
-            icon: FileText,
-            items: [
-                { href: "/statistik/agama", label: "Agama" },
-                { href: "/statistik/pekerjaan", label: "Pekerjaan" },
-            ],
-        },
+        { href: "/", label: "Beranda", icon: Home },
+        { href: "/profil", label: "Profil", icon: Building2 },
+        { href: "/layanan", label: "Layanan", icon: Sparkles },
+        { href: "/portofolio", label: "Portofolio", icon: Users },
+        { href: "/produk", label: "Produk", icon: Cpu },
+        { href: "/inovasi", label: "Inovasi", icon: Lightbulb },
+        { href: "/kontak", label: "Kontak", icon: MessageSquare },
     ];
 
     const handleSearch = (e: React.FormEvent) => {
@@ -179,10 +80,10 @@ export function Header() {
     }, []);
 
     return (
-        <header className="bg-[#39a2cf] text-white fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+        <header className="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 text-white shadow-lg shadow-primary/10">
             {/* Top Header Bar */}
             <div
-                className={`border-b border-[#10244f]/30 bg-[#1279a7] transition-opacity duration-300 ${
+                className={`border-b border-white/10 bg-foreground transition-opacity duration-300 ${
                     isScrolled ? "opacity-0 h-0" : "opacity-100 h-16"
                 } overflow-hidden`}
             >
@@ -194,15 +95,7 @@ export function Header() {
                                 href="/"
                                 className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer"
                             >
-                                <Logo {...LogoVariant.light} size={40} />
-                                <div className="hidden sm:block">
-                                    <h1 className="text-lg font-bold text-white">Kalurahan Pondokrejo</h1>
-                                    <p className="text-xs text-[#ddf0ff]">Kabupaten Sleman, DIY</p>
-                                </div>
-                                <div className="block sm:hidden">
-                                    <h1 className="text-lg font-bold text-white">Pondokrejo</h1>
-                                    <p className="text-xs text-[#ddf0ff]">Kabupaten Sleman</p>
-                                </div>
+                                <img src="/images/Clasnet Group - Clear Logo - white.png" alt="Clasnet Logo" className="h-8 w-auto object-contain" />
                             </Link>
                         </div>
 
@@ -214,12 +107,12 @@ export function Header() {
                                     placeholder={t("navigation.cari")}
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-10 pr-10 py-2 bg-white/10 border-[#7487af]/20 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-[#0a4661]/40"
+                                    className="w-full pl-10 pr-10 py-2 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-secondary/40"
                                 />
                                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60" />
                                 <Button
                                     type="submit"
-                                    className="absolute right-0 top-0 bottom-0 px-3 rounded-l-none h-auto bg-[#0a4661] hover:bg-[#115c93] text-white"
+                                    className="absolute right-0 top-0 bottom-0 px-3 rounded-l-none h-auto bg-secondary hover:bg-secondary/90 text-white border-none"
                                 >
                                     <Search className="h-4 w-4" />
                                 </Button>
@@ -232,94 +125,94 @@ export function Header() {
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                className="lg:hidden text-white hover:bg-[#2a77a7]! hover:text-white! cursor-pointer"
+                                className="lg:hidden text-white hover:bg-white/20! hover:text-white! cursor-pointer"
                                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                             >
                                 <Search className="h-5 w-5" />
                             </Button>
 
                             {/* Notifications */}
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button
-                                        variant="ghost"
-                                        size="icon"
-                                        className="relative text-white hover:text-white! hover:bg-[#2a77a7]! cursor-pointer"
-                                    >
-                                        <Bell className="h-5 w-5" />
-                                        <Badge className="absolute -top-1 -right-1 w-5 h-5 bg-[#f87171] text-white text-xs rounded-full p-0 flex items-center justify-center">
-                                            3
-                                        </Badge>
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="w-80">
-                                    <DropdownMenuItem className="flex items-center justify-between data-highlighted:bg-[#2a77a7] data-highlighted:text-white">
-                                        <span>Pengumuman Baru</span>
-                                        <Badge variant="destructive">Baru</Badge>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem className="flex items-center justify-between data-highlighted:bg-[#2a77a7] data-highlighted:text-white">
-                                        <span>Update APBDes</span>
-                                        <Badge variant="secondary">Info</Badge>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem className="flex items-center justify-between data-highlighted:bg-[#2a77a7] data-highlighted:text-white">
-                                        <span>Jadwal Kegiatan</span>
-                                        <Badge variant="outline">Reminder</Badge>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem className="data-highlighted:bg-[#2a77a7] data-highlighted:text-white">
-                                        <Link href="/notifikasi" className="w-full cursor-pointer">
-                                            Lihat Semua Notifikasi
-                                        </Link>
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                            {isMounted && (
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            className="relative text-white hover:text-white! hover:bg-white/20! cursor-pointer"
+                                        >
+                                            <Bell className="h-5 w-5" />
+                                            <Badge className="absolute -top-1 -right-1 w-5 h-5 bg-[#f87171] text-white text-xs rounded-full p-0 flex items-center justify-center">
+                                                3
+                                            </Badge>
+                                        </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end" className="w-80">
+                                        <DropdownMenuItem className="flex items-center justify-between data-highlighted:bg-secondary data-highlighted:text-white">
+                                            <span>Rilis Orion CMS v1.0</span>
+                                            <Badge variant="secondary">Baru</Badge>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem className="flex items-center justify-between data-highlighted:bg-secondary data-highlighted:text-white">
+                                            <span>Update Dashboard SID</span>
+                                            <Badge variant="outline">Info</Badge>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem className="data-highlighted:bg-primary/20">
+                                            <Link href="/notifikasi" className="w-full cursor-pointer text-primary">
+                                                Lihat Semua Notifikasi
+                                            </Link>
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            )}
 
                             {/* User Account */}
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button
-                                        variant="ghost"
-                                        size="sm"
-                                        className="text-white hover:text-white! hover:bg-[#2a77a7]! cursor-pointer px-0! ml-4! sm:ml-0!"
-                                    >
-                                        <Info className="h-4 w-4 mr-2" />
-                                        <span className="hidden sm:inline">Info</span>
-                                        <ChevronDown className="h-4 w-4 ml-1" />
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="w-96">
-                                    <DropdownMenuItem className="data-highlighted:bg-[#2a77a7] data-highlighted:text-white" disabled>
-                                        <div className="space-y-1">
-                                            <p className="text-sm">
-                                                Portal ini merupakan penampil konten dari berbagai layanan via API.
-                                            </p>
-                                            <p className="text-sm">
-                                                Tidak tersedia akun, dasbor, atau fitur login publik.
-                                            </p>
-                                        </div>
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                            {isMounted && (
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            className="text-white hover:text-white! hover:bg-white/20! cursor-pointer px-0! ml-4! sm:ml-0!"
+                                        >
+                                            <Info className="h-4 w-4 mr-2" />
+                                            <span className="hidden sm:inline">Info</span>
+                                            <ChevronDown className="h-4 w-4 ml-1" />
+                                        </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end" className="w-96">
+                                        <DropdownMenuItem disabled>
+                                            <div className="space-y-1">
+                                                <p className="text-sm">
+                                                    Portal ini merupakan penampil konten dari berbagai layanan via API.
+                                                </p>
+                                                <p className="text-sm">
+                                                    Tidak tersedia akun, dasbor, atau fitur login publik.
+                                                </p>
+                                            </div>
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            )}
                         </div>
                     </div>
                 </div>
 
                 {/* Mobile Search */}
                 {isSearchOpen && (
-                    <div className="lg:hidden border-t border-[#10244f]/30 p-4">
+                    <div className="lg:hidden border-t border-white/10 p-4">
                         <form onSubmit={handleSearch} className="relative w-full">
                             <Input
                                 type="search"
                                 placeholder={t("navigation.cari")}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-10 py-2 bg-white/10 border-[#7487af]/20 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-[#0a4661]/40"
+                                className="w-full pl-10 pr-10 py-2 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-secondary/40"
                                 autoFocus
                             />
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60" />
                             <Button
                                 type="submit"
-                                className="absolute right-0 top-0 bottom-0 px-3 rounded-l-none h-auto bg-[#0a4661] hover:bg-[#115c93] text-white"
+                                className="absolute right-0 top-0 bottom-0 px-3 rounded-l-none h-auto bg-secondary hover:bg-secondary/90 text-white"
                             >
                                 <Search className="h-4 w-4" />
                             </Button>
@@ -329,151 +222,12 @@ export function Header() {
             </div>
 
             {/* Main Navigation - Desktop */}
-            <nav className="hidden lg:block border-b border-[#10244f]/30">
+            <nav className="hidden lg:block bg-primary/95 backdrop-blur-md border-t border-white/10 shadow-sm">
                 <div className="container mx-auto px-4">
-                    <div className="flex items-center justify-center space-x-1 h-12">
+                    <div className="flex items-center justify-center space-x-2 h-14">
                         {/* Main Navigation Items */}
                         {mainNavItems.map((item) => {
-                            // Check if this item should have a dropdown
-                            const isPemerintahanItem = item.href === "/pemerintahan";
-                            const isInformasiItem = item.href === "/informasi";
-                            const isStatistikItem = item.href === "/statistik";
-                            const isInovasiItem = item.href === "/inovasi";
                             const IconComponent = item.icon;
-
-                            if (isPemerintahanItem) {
-                                // Render as dropdown for pemerintahan sub-items
-                                return (
-                                    <DropdownMenu key={item.href}>
-                                        <DropdownMenuTrigger asChild>
-                                            <Button
-                                                variant="ghost"
-                                                className="px-4! py-2! text-sm! text-white! bg-transparent! hover:bg-[#2a77a7]! hover:text-white! data-[state=open]:bg-[#2a77a7]! data-[state=open]:text-white! rounded-md transition-colors cursor-pointer h-auto"
-                                            >
-                                                <IconComponent className="h-4 w-4 mr-2" />
-                                                <span>{item.label}</span>
-                                                <ChevronDown className="h-4 w-4 ml-1" />
-                                            </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="start" className="w-full">
-                                            {pemerintahanSubItems.map((subItem) => (
-                                                <DropdownMenuItem key={subItem.href} asChild>
-                                                    <Link
-                                                        href={subItem.href}
-                                                        className="w-full cursor-pointer data-highlighted:bg-[#2a77a7] data-highlighted:text-white"
-                                                    >
-                                                        {subItem.label}
-                                                    </Link>
-                                                </DropdownMenuItem>
-                                            ))}
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                );
-                            }
-
-                            if (isInformasiItem) {
-                                // Render as dropdown for informasi sub-items
-                                return (
-                                    <DropdownMenu key={item.href}>
-                                        <DropdownMenuTrigger asChild>
-                                            <Button
-                                                variant="ghost"
-                                                className="px-4! py-2! text-sm! text-white! bg-transparent! hover:bg-[#2a77a7]! hover:text-white! data-[state=open]:bg-[#2a77a7]! data-[state=open]:text-white! rounded-md transition-colors cursor-pointer h-auto"
-                                            >
-                                                <IconComponent className="h-4 w-4 mr-2" />
-                                                <span>{item.label}</span>
-                                                <ChevronDown className="h-4 w-4 ml-1" />
-                                            </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="start" className="w-full">
-                                            {informasiSubItems.map((subItem) => (
-                                                <DropdownMenuItem key={subItem.href} asChild>
-                                                    <Link
-                                                        href={subItem.href}
-                                                        className="w-full cursor-pointer data-highlighted:bg-[#2a77a7] data-highlighted:text-white"
-                                                    >
-                                                        {subItem.label}
-                                                    </Link>
-                                                </DropdownMenuItem>
-                                            ))}
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                );
-                            }
-
-                            if (isStatistikItem) {
-                                // Render as dropdown for statistik sub-items
-                                return (
-                                    <DropdownMenu key={item.href}>
-                                        <DropdownMenuTrigger asChild>
-                                            <Button
-                                                variant="ghost"
-                                                className="px-4! py-2! text-sm! text-white! bg-transparent! hover:bg-[#2a77a7]! hover:text-white! data-[state=open]:bg-[#2a77a7]! data-[state=open]:text-white! rounded-md transition-colors cursor-pointer h-auto"
-                                            >
-                                                <IconComponent className="h-4 w-4 mr-2" />
-                                                <span>{item.label}</span>
-                                                <ChevronDown className="h-4 w-4 ml-1" />
-                                            </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="start" className="w-full">
-                                            {statistikCategories.map((category) => {
-                                                const CategoryIcon = category.icon;
-                                                return (
-                                                    <DropdownMenuSub key={category.category}>
-                                                        <DropdownMenuSubTrigger>
-                                                            <CategoryIcon className="h-4 w-4 mr-2" />
-                                                            {category.category}
-                                                        </DropdownMenuSubTrigger>
-                                                        <DropdownMenuSubContent alignOffset={-4}>
-                                                            {category.items.map((subItem) => (
-                                                                <DropdownMenuItem key={subItem.href} asChild>
-                                                                    <Link
-                                                                        href={subItem.href}
-                                                                        className="w-full cursor-pointer data-highlighted:bg-[#2a77a7] data-highlighted:text-white"
-                                                                    >
-                                                                        {subItem.label}
-                                                                    </Link>
-                                                                </DropdownMenuItem>
-                                                            ))}
-                                                        </DropdownMenuSubContent>
-                                                    </DropdownMenuSub>
-                                                );
-                                            })}
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                );
-                            }
-
-                            if (isInovasiItem) {
-                                return (
-                                    <DropdownMenu key={item.href}>
-                                        <DropdownMenuTrigger asChild>
-                                            <Button
-                                                variant="ghost"
-                                                className="px-4! py-2! text-sm! text-white! bg-transparent! hover:bg-[#2a77a7]! hover:text-white! data-[state=open]:bg-[#2a77a7]! data-[state=open]:text-white! rounded-md transition-colors cursor-pointer h-auto"
-                                            >
-                                                <IconComponent className="h-4 w-4 mr-2" />
-                                                <span>{item.label}</span>
-                                                <ChevronDown className="h-4 w-4 ml-1" />
-                                            </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="start" className="w-full">
-                                            {inovasiSubItems.map((subItem) => (
-                                                <DropdownMenuItem key={subItem.href} asChild>
-                                                    <Link
-                                                        href={subItem.href}
-                                                        className="w-full cursor-pointer data-highlighted:bg-[#2a77a7] data-highlighted:text-white"
-                                                    >
-                                                        {subItem.label}
-                                                    </Link>
-                                                </DropdownMenuItem>
-                                            ))}
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                );
-                            }
-
-                            // Render as regular link
                             if ((item as any).external) {
                                 return (
                                     <a
@@ -481,7 +235,7 @@ export function Header() {
                                         href={item.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-4 py-2 text-sm text-white hover:bg-[#2a77a7] hover:text-white! rounded-md transition-colors cursor-pointer flex items-center"
+                                        className="px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/20 hover:text-white rounded-lg transition-all cursor-pointer flex items-center"
                                     >
                                         <IconComponent className="h-4 w-4 mr-2" />
                                         {item.label}
@@ -493,7 +247,7 @@ export function Header() {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className="px-4 py-2 text-sm text-white hover:bg-[#2a77a7] hover:text-white! rounded-md transition-colors cursor-pointer flex items-center"
+                                    className="px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/20 hover:text-white rounded-lg transition-all cursor-pointer flex items-center"
                                 >
                                     <IconComponent className="h-4 w-4 mr-2" />
                                     {item.label}

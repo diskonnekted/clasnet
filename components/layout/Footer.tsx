@@ -11,19 +11,17 @@ export function Footer() {
     const { t } = useTranslation();
 
     const quickLinks = [
-        { href: "/berita", label: t("navigation.berita") },
-        { href: "https://pondokrejo.sleman-desa.id/layanan-mandiri", label: t("navigation.layanan"), external: true },
-        { href: "/profil/sejarah", label: "Sejarah Kalurahan" },
-        { href: "/pemerintahan", label: t("navigation.pemerintahan") },
-        { href: "/keuangan", label: t("navigation.keuangan") },
-        { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: t("navigation.kontak"), external: true },
+        { href: "/", label: "Beranda" },
+        { href: "/profil", label: "Profil Perusahaan" },
+        { href: "/layanan", label: "Layanan & Solusi" },
+        { href: "/produk", label: "Produk (Orion)" },
     ];
 
     const layananLinks = [
-        { href: "https://pondokrejo.sleman-desa.id/layanan-mandiri", label: "Layanan Mandiri", external: true },
-        { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: "Pengaduan Masyarakat", external: true },
-        { href: "/iot", label: "IoT Monitoring" },
-        { href: "/statistik", label: "Data Statistik" },
+        { href: "/layanan", label: "Sistem Informasi Desa (SID)" },
+        { href: "/layanan", label: "Dasbor SID" },
+        { href: "/produk", label: "Orion CMS" },
+        { href: "/produk", label: "Orion Versa (IoT)" },
     ];
 
     // Simple icon wrapper component for simple-icons
@@ -39,43 +37,42 @@ export function Footer() {
 
     const socialLinks = [
         {
-            href: "https://www.facebook.com/kalurahanpondokrejo.sid",
+            href: "https://www.facebook.com/clasnet",
             icon: siFacebook,
             label: "Facebook",
             color: "#0866FF",
         },
         {
-            href: "https://api.whatsapp.com/send?phone=6287742203602",
+            href: "https://api.whatsapp.com/send?phone=6285117041846",
             icon: siWhatsapp,
             label: "WhatsApp",
             color: "#2bb517",
         },
         {
-            href: "https://www.instagram.com/kalurahanpondokrejo.sid",
+            href: "https://www.instagram.com/clasnet",
             icon: siInstagram,
             label: "Instagram",
             color: "#FF0069",
         },
-        { href: "https://www.youtube.com/@TIMMEDIAPONDOKREJO", icon: siYoutube, label: "YouTube", color: "#FF0000" },
+        { href: "https://www.youtube.com/@clasnet", icon: siYoutube, label: "YouTube", color: "#FF0000" },
     ];
 
     return (
-        <footer className="bg-[#0a4661] text-white">
+        <footer className="bg-primary text-white" id="kontak">
             {/* Main Footer Content */}
             <div className="container mx-auto px-4 py-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {/* About Section */}
                     <div className="space-y-4">
                         <div className="flex items-center space-x-3">
-                            <Logo {...LogoVariant.footer} />
+                            <img src="/images/Clasnet Group - Clear Logo - white.png" alt="Clasnet Logo" className="h-10 w-auto object-contain" />
                             <div>
-                                <h3 className="text-lg font-bold text-white">Kalurahan Pondokrejo</h3>
-                                <p className="text-xs text-[#ddf0ff]">Kabupaten Sleman, DIY</p>
+                                <h3 className="text-lg font-bold text-white">Clasnet</h3>
+                                <p className="text-xs text-muted-foreground">Arsitek Transformasi Digital</p>
                             </div>
                         </div>
-                        <p className="text-sm text-[#ddf0ff] leading-relaxed">
-                            Portal resmi Pemerintah Kalurahan Pondokrejo yang menyediakan informasi dan layanan publik
-                            digital untuk warga kalurahan.
+                        <p className="text-sm text-white/80 leading-relaxed">
+                            Clasnet adalah perusahaan teknologi terdepan di Indonesia yang memposisikan diri sebagai Arsitek Transformasi Digital & Inovasi IoT.
                         </p>
                         <div className="flex space-x-3">
                             {socialLinks.map((social) => (
@@ -96,7 +93,7 @@ export function Footer() {
                         <h4 className="text-lg font-semibold text-white">{t("footer.quickLinks")}</h4>
                         <ul className="space-y-2">
                             {quickLinks.map((link) => (
-                                <li key={link.href}>
+                                <li key={link.label}>
                                     {link.external ? (
                                         <a
                                             href={link.href}
@@ -126,7 +123,7 @@ export function Footer() {
                         <h4 className="text-lg font-semibold text-white">{t("footer.layanan")}</h4>
                         <ul className="space-y-2">
                             {layananLinks.map((link) => (
-                                <li key={link.href}>
+                                <li key={link.label}>
                                     {link.external ? (
                                         <a
                                             href={link.href}
@@ -155,32 +152,32 @@ export function Footer() {
                         <h4 className="text-lg font-semibold text-white">Hubungi Kami</h4>
                         <div className="space-y-3">
                             <div className="flex items-start space-x-3">
-                                <MapPin className="h-5 w-5 text-[#3eafdf] mt-0.5 shrink-0" />
-                                <div className="text-sm text-[#ddf0ff]">
-                                    <p>{t("footer.alamat")}</p>
+                                <MapPin className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
+                                <div className="text-sm text-white/80">
+                                    <p>Perum Kalisemi Baru D5 No.7, Banjarnegara 53412, Indonesia</p>
                                 </div>
                             </div>
                             <div className="flex items-center space-x-3">
-                                <Phone className="h-5 w-5 text-[#3eafdf] shrink-0" />
+                                <Phone className="h-5 w-5 text-secondary shrink-0" />
                                 <a
-                                    href={`tel:${t("footer.telepon").replace(/[^\d+]/g, "")}`}
-                                    className="text-sm text-[#ddf0ff] hover:text-[#3eafdf] transition-colors"
+                                    href="tel:+6285117041846"
+                                    className="text-sm text-white/80 hover:text-secondary transition-colors"
                                 >
-                                    {t("footer.telepon")}
+                                    +62 851 1704 1846
                                 </a>
                             </div>
                             <div className="flex items-center space-x-3">
-                                <Mail className="h-5 w-5 text-[#3eafdf] shrink-0" />
+                                <Mail className="h-5 w-5 text-secondary shrink-0" />
                                 <a
-                                    href={`mailto:${t("footer.email")}`}
-                                    className="text-sm text-[#ddf0ff] hover:text-[#3eafdf] transition-colors"
+                                    href="mailto:info@clasnet.id"
+                                    className="text-sm text-white/80 hover:text-secondary transition-colors"
                                 >
-                                    {t("footer.email")}
+                                    info@clasnet.id
                                 </a>
                             </div>
                             <div className="flex items-center space-x-3">
-                                <Clock className="h-5 w-5 text-[#3eafdf] shrink-0" />
-                                <span className="text-sm text-[#ddf0ff]">{t("footer.jamOperasional")}</span>
+                                <Clock className="h-5 w-5 text-secondary shrink-0" />
+                                <span className="text-sm text-white/80">Senin - Jumat: 08:00 - 16:00 WIB</span>
                             </div>
                         </div>
                     </div>
@@ -188,19 +185,17 @@ export function Footer() {
             </div>
 
             {/* Bottom Footer */}
-            <div className="border-t border-[#39a2cf]">
+            <div className="border-t border-white/10 mt-8">
                 <div className="container mx-auto px-4 py-4">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <div className="text-sm text-[#7487af] text-center md:text-left">
-                            <p>{t("footer.copyright")}</p>
+                        <div className="text-sm text-muted-foreground text-center md:text-left">
+                            <p>&copy; 2026 Clasnet. All rights reserved.</p>
                         </div>
 
                         <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4">
-                            <div className="flex items-center space-x-2 text-xs sm:text-sm text-[#7487af]">
-                                <span>Made with</span>
-                                <Heart className="h-4 w-4 text-[#f87171]" />
-                                <span>by</span>
-                                <a href="https://www.clasnet.co.id" target="_blank" rel="noopener noreferrer">
+                            <div className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground">
+                                <span>Developed by</span>
+                                <a href="https://www.clasnet.co.id" target="_blank" rel="noopener noreferrer" className="hover:text-white">
                                     Clasnet
                                 </a>
                             </div>
