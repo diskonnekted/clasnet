@@ -1,65 +1,41 @@
-<p align="center">
-  <img src="public/images/logo.png" width="120" alt="Logo Kalurahan Pondokrejo" />
-</p>
+# Portal Utama Clasnet
 
-# Portal Pondokrejo
+Portal web resmi dan profil perusahaan untuk **Clasnet** - Arsitek Transformasi Digital & Inovasi IoT yang berdedikasi membangun ekosistem digital inovatif di Indonesia.
 
-Portal Pondokrejo adalah aplikasi web yang berfungsi sebagai pengumpul API (API aggregator) untuk menyajikan informasi publik dari berbagai sistem milik Kalurahan Pondokrejo. Portal ini tidak menjadi sumber data utama dan tidak menyimpan data konten ke database internal; konten ditampilkan dari layanan upstream yang relevan.
+## Fitur Utama
 
-## Tujuan
-- Menyediakan satu pintu akses informasi publik yang konsisten, cepat, dan mudah diakses.
-- Mengurangi duplikasi implementasi antarmuka dengan memusatkan konsumsi API dari sistem yang sudah ada.
-- Menjadi lapisan presentasi (presentation layer) dan integrasi (integration layer) bagi layanan yang berbeda.
+- **Desain Modern & Responsif**: Dibangun dengan Next.js App Router, Tailwind CSS, dan desain UI/UX terkini (Glassmorphism, animasi interaktif).
+- **Theme Switcher Dinamis**: Personalisasi skema warna situs secara instan dari palet warna estetik Clasnet tanpa mengorbankan keindahan.
+- **Integrasi Backend Klasik**: Menyajikan data *Portofolio*, *Arsip Proyek*, dan *Berita Kegiatan* secara aktual *(real-time)* yang di-*scrape* dan dihubungkan ke berbagai REST API ekosistem Clasnet (`clasnet.co.id`, `sid.clasnet.co.id`, dan `arifsusilo.com`).
+- **Paginasi Asinkron**: Beban data yang dimuat dengan rapi dan terukur di setiap halaman menggunakan Server Components.
+- **Performa Tinggi**: Dioptimalkan untuk kecepatan navigasi dan *SEO*.
 
-## Sumber Data
-Portal mengambil data dari beberapa layanan, antara lain:
-- OpenSID (arsip/berita, wilayah, PPID, keuangan, dan endpoint internal lain yang relevan)
-- SDGs
-- IDM
-- Sistem/layanan internal lain yang dipublikasikan melalui API
+## Teknologi yang Digunakan
 
-## Cara Kerja (Ringkas)
-- Aplikasi client dan server memanggil route internal `app/api/*` sebagai antarmuka terpadu.
-- Untuk beberapa sumber eksternal, portal menyediakan proxy untuk menghindari masalah CORS dan menambahkan caching.
-- Konten ditampilkan secara on-demand dari sumber upstream, dengan mekanisme cache/revalidate sesuai kebutuhan.
+- **Framework Dasar**: [Next.js](https://nextjs.org/) (React 18)
+- **Pewarnaan & Gaya**: [Tailwind CSS](https://tailwindcss.com/)
+- **Ikonografi**: [Lucide React](https://lucide.dev/)
+- **Utilitas Data**: [Cheerio](https://cheerio.js.org/)
 
-## Prasyarat
-- Node.js dan npm
-- Environment variables (lihat `.env.example`)
+## Memulai Pengembangan Lokal
 
-## Menjalankan Lokal
-```bash
-npm install
-npm run dev
-```
+1. Pastikan Anda berada di lingkungan dengan Node.js versi terbaru.
+2. Instal pustaka dependensi yang dibutuhkan:
+   ```bash
+   npm install
+   ```
+3. Mulai peladen (*server*) pengembangan:
+   ```bash
+   npm run dev
+   ```
+4. Buka [http://localhost:5091](http://localhost:5091) di *browser* Anda untuk melihat pratinjau.
 
-Buka: http://localhost:5091
+## Ekosistem Inovasi
 
-## Build dan Menjalankan Production
-```bash
-npm run build
-npm run start
-```
+Clasnet tidak hanya mengembangkan layanan klien, melainkan mendedikasikan diri pada inovasi murni:
+- **Orion Versa** (Early Warning System Banjir & Longsor)
+- **Entropix** (True Random Number Generator Kuantum)
+- **King MBG** (IoT Kitchen Monitoring System)
+- **Clasnet Edu** (Prakerin & Inkubasi Talenta)
 
-## Konfigurasi Environment (Umum)
-- `OPENSID_API_URL`: base URL OpenSID (jika diperlukan)
-- `NEXT_PUBLIC_SITE_URL`: base URL portal (untuk produksi)
-- `CORS_ORIGIN`: origin yang diizinkan mengakses API portal
-- `RATE_LIMIT_WINDOW_MS`, `RATE_LIMIT_MAX`: konfigurasi rate limiting route `/api`
-
-## Keterangan Data Pribadi
-Portal Pondokrejo tidak melakukan pengumpulan, perekaman, maupun penyimpanan data pribadi pengguna secara mandiri. Portal ini berfungsi sebagai media penyajian informasi yang bersumber dari sistem/layanan upstream milik Kalurahan Pondokrejo. Dengan demikian, kewajiban pengelolaan dan pemenuhan ketentuan perlindungan data pribadi melekat pada sistem sumber sesuai kewenangan dan kebijakan masing-masing. Portal Pondokrejo tetap menerapkan pengamanan teknis yang wajar untuk menjaga integritas layanan.
-
-## Keamanan dan Operasional
-- Security headers dan Content Security Policy (CSP) dikonfigurasi global di [next.config.ts](file:///d:/xampp/htdocs/audit-pondokrejo/next-pondokrejo/next.config.ts).
-- CORS distandarkan untuk route API utama melalui helper internal dan dibatasi oleh konfigurasi environment.
-- Rate limiting diterapkan pada route `/api` melalui [middleware.ts](file:///d:/xampp/htdocs/audit-pondokrejo/next-pondokrejo/middleware.ts).
-- Ringkasan audit fix terbaru tersedia di [AUDIT_FIX_LATEST.md](file:///d:/xampp/htdocs/audit-pondokrejo/next-pondokrejo/AUDIT_FIX_LATEST.md).
-
-## Dokumen
-- [RELEASE_NOTES.md](file:///d:/xampp/htdocs/audit-pondokrejo/next-pondokrejo/RELEASE_NOTES.md)
-- [AUDIT_FIX_LATEST.md](file:///d:/xampp/htdocs/audit-pondokrejo/next-pondokrejo/AUDIT_FIX_LATEST.md)
-
-<p align="center">
-  <img src="public/images/clasnet-group.svg" width="140" alt="Clasnet Group" />
-</p>
+**Kunjungi beranda utama kami di:** [clasnet.co.id](https://clasnet.co.id)
