@@ -12,10 +12,11 @@ export const metadata = {
 export default async function PortofolioPage({
     searchParams,
 }: {
-    searchParams?: { page?: string, arsipPage?: string };
+    searchParams: Promise<{ page?: string, arsipPage?: string }>;
 }) {
-    const currentPage = Number(searchParams?.page) || 1;
-    const currentArsipPage = Number(searchParams?.arsipPage) || 1;
+    const sp = await searchParams;
+    const currentPage = Number(sp?.page) || 1;
+    const currentArsipPage = Number(sp?.arsipPage) || 1;
 
     const portofolios = await getPortofolios(currentPage);
     const arsip = await getArsipData(currentArsipPage);

@@ -239,3 +239,17 @@ export async function getInovasiArif(): Promise<Inovasi[]> {
         return [];
     }
 }
+
+export async function getInovasiGithub(): Promise<Inovasi[]> {
+    try {
+        const fs = require('fs');
+        const path = require('path');
+        const filePath = path.join(process.cwd(), 'data', 'github_inovasi.json');
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        const data = JSON.parse(fileData);
+        return data as Inovasi[];
+    } catch(e) {
+        console.error("Error reading github inovasi", e);
+        return [];
+    }
+}

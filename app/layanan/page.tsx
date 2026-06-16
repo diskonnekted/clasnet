@@ -12,9 +12,10 @@ export const metadata = {
 export default async function LayananPage({
     searchParams,
 }: {
-    searchParams?: { page?: string };
+    searchParams: Promise<{ page?: string }>;
 }) {
-    const currentPage = Number(searchParams?.page) || 1;
+    const sp = await searchParams;
+    const currentPage = Number(sp?.page) || 1;
     const kegiatans = await getKegiatans(currentPage);
     
     // Check if there's likely a next page. test_kegiatan.js showed 9 items per page.
