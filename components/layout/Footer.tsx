@@ -67,7 +67,6 @@ export function Footer() {
                         <div className="flex items-center space-x-3">
                             <img src="/images/Clasnet Group - Clear Logo - white.png" alt="Clasnet Logo" className="h-10 w-auto object-contain" />
                             <div>
-                                <h3 className="text-lg font-bold text-white">Clasnet</h3>
                                 <p className="text-xs text-muted-foreground">Arsitek Transformasi Digital</p>
                             </div>
                         </div>
