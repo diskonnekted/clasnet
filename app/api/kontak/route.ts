@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     } catch (error) {
         if (error instanceof z.ZodError) {
             return NextResponse.json(
-                { success: false, message: "Data tidak valid", errors: error.errors },
+                { success: false, message: "Data tidak valid", errors: error.flatten().fieldErrors },
                 { status: 400 }
             );
         }
