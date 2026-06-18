@@ -5,7 +5,7 @@ module.exports = {
             name: "app", // The name of your application
             script: "node_modules/next/dist/bin/next", // The script to run
             args: "start", // Arguments for the script
-            instances: "4", // Launch 32 instances as CPU cores
+            instances: 1, // Launch 1 instance
             exec_mode: "cluster", // Enable cluster mode
             autorestart: true, // Restart the app if it crashes
             watch: false, // Do not watch for file changes (we handle builds manually)
