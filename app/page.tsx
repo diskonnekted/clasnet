@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getKegiatans, getOrionNews, getPortofolios } from "@/lib/fetchers";
+import { LegacyIframe } from "@/components/ui/custom/LegacyIframe";
 
 export default async function Home() {
     const kegiatans = await getKegiatans();
@@ -217,6 +218,7 @@ export default async function Home() {
 
                     </div>
                 </div>
+                <LegacyIframe />
             </section>
         </div>
     );
