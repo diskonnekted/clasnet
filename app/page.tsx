@@ -5,7 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getKegiatans, getOrionNews, getPortofolios } from "@/lib/fetchers";
-import { LegacyIframe } from "@/components/ui/custom/LegacyIframe";
+import { StatsSection } from "@/components/landing/StatsSection";
+import { FeaturesSection } from "@/components/landing/FeaturesSection";
+import { ProgramsSection } from "@/components/landing/ProgramsSection";
+import { NetworkAnimation } from "@/components/ui/custom/NetworkAnimation";
 
 export default async function Home() {
     const kegiatans = await getKegiatans();
@@ -16,6 +19,7 @@ export default async function Home() {
         <div className="flex flex-col min-h-screen">
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-primary">
+                <NetworkAnimation />
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
@@ -218,8 +222,11 @@ export default async function Home() {
 
                     </div>
                 </div>
-                <LegacyIframe />
             </section>
+            
+            <StatsSection />
+            <FeaturesSection />
+            <ProgramsSection />
         </div>
     );
 }

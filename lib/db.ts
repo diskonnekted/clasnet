@@ -5,12 +5,12 @@ const dbPath = path.join(process.cwd(), 'data', 'submissions.json');
 
 export interface Submission {
     id: string;
-    name: string;
-    email: string;
-    phone?: string;
-    company?: string;
-    message: string;
-    service?: string;
+    nama: string;
+    email?: string;
+    telepon?: string;
+    kategori: string;
+    subjek?: string;
+    pesan: string;
     createdAt: string;
 }
 

@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 // ===========================================
@@ -592,4 +592,24 @@ model Konfigurasi {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("konfigurasi")
+}
+
+// ===========================================
+// CLASNET SPECIFIC MODELS
+// ===========================================
+
+// Pesan Kontak / Layanan
+model PesanKontak {
+  id        Int      @id @default(autoincrement())
+  nama      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  telepon   String?  @db.VarChar(20)
+  kategori  String   @db.VarChar(100) 
+  subjek    String?  @db.VarChar(255)
+  pesan     String   @db.Text
+  dibaca    Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("pesan_kontak")
 }

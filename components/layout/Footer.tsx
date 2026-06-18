@@ -18,10 +18,10 @@ export function Footer() {
     ];
 
     const layananLinks: { href: string; label: string; external?: boolean }[] = [
-        { href: "/layanan", label: "Sistem Informasi Desa (SID)" },
-        { href: "/layanan", label: "Dasbor SID" },
-        { href: "/produk", label: "Orion CMS" },
-        { href: "/produk", label: "Orion Versa (IoT)" },
+        { href: "https://sid.clasnet.co.id", label: "Sistem Informasi Desa (SID)", external: true },
+        { href: "https://desaonline.cloud", label: "Dasbor SID", external: true },
+        { href: "https://orionapp.clasnet.co.id", label: "Orion CMS", external: true },
+        { href: "https://orion.clasnet.co.id", label: "Orion Versa (IoT)", external: true },
     ];
 
     // Simple icon wrapper component for simple-icons
@@ -66,12 +66,9 @@ export function Footer() {
                     <div className="space-y-4">
                         <div className="flex items-center space-x-3">
                             <img src="/images/Clasnet Group - Clear Logo - white.png" alt="Clasnet Logo" className="h-10 w-auto object-contain" />
-                            <div>
-                                <p className="text-xs text-muted-foreground">Arsitek Transformasi Digital</p>
-                            </div>
                         </div>
                         <p className="text-sm text-white/80 leading-relaxed">
-                            Clasnet adalah perusahaan teknologi terdepan di Indonesia yang memposisikan diri sebagai Arsitek Transformasi Digital & Inovasi IoT.
+                            Clasnet adalah perusahaan teknologi terdepan di Indonesia yang berfokus pada pengembangan solusi digital & Inovasi IoT.
                         </p>
                         <div className="flex space-x-3">
                             {socialLinks.map((social) => (

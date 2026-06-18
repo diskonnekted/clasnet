@@ -53,7 +53,7 @@ export default function ProfilPage() {
                     <div className="relative">
                         <div className="absolute inset-0 bg-primary/5 rounded-3xl transform translate-x-4 translate-y-4"></div>
                         <img 
-                            src="https://orion.clasnet.co.id/wp-content/uploads/2026/01/5ca2be5b-7367-4738-89f4-1fdc2fb68ab4-scaled-600x338.jpg" 
+                            src="/uploads/Clasnet%20Group_files/carousel-2.jpg" 
                             alt="Tim Clasnet" 
                             className="rounded-3xl relative z-10 w-full object-cover aspect-square shadow-xl"
                         />
@@ -107,21 +107,18 @@ export default function ProfilPage() {
                 <div className="max-w-3xl mx-auto">
                     <Card className="overflow-hidden border-border">
                         <div className="md:flex">
-                            <div className="md:w-1/3 bg-primary/10">
+                            <div className="md:w-2/5 bg-primary/5 flex items-center justify-center p-6 md:p-8">
                                 <img 
-                                    src="https://orion.clasnet.co.id/wp-content/uploads/2026/03/orion-ws-600x380.jpg" 
-                                    alt="Arif Susilo" 
-                                    className="w-full h-full object-cover min-h-[300px]"
+                                    src="/uploads/tim.jpg" 
+                                    alt="Tim Clasnet" 
+                                    className="w-full aspect-square object-cover rounded-2xl shadow-lg"
                                 />
                             </div>
-                            <div className="p-8 md:w-2/3 flex flex-col justify-center">
-                                <h3 className="text-2xl font-bold text-primary mb-1">Arif Susilo</h3>
-                                <p className="text-secondary font-medium mb-4">IT Architect & Founder</p>
+                            <div className="p-8 md:p-10 md:w-3/5 flex flex-col justify-center">
+                                <h3 className="text-2xl font-bold text-primary mb-1">Tim Clasnet</h3>
+                                <p className="text-secondary font-medium mb-4">Tim Ahli & Pengembang</p>
                                 <p className="text-muted-foreground mb-4">
-                                    Sebagai inisiator utama, Arif Susilo memimpin visi teknis Clasnet. Dengan pengalaman bertahun-tahun dalam pengembangan perangkat lunak dan arsitektur infrastruktur, beliau berfokus pada perancangan sistem yang efisien, aman, dan mudah diakses oleh berbagai lapisan masyarakat.
-                                </p>
-                                <p className="text-muted-foreground">
-                                    Filosofi pengembangan beliau tercermin dalam platform Orion CMS yang mengutamakan kecepatan dan keringanan, serta Orion Versa yang membawa solusi IoT cerdas ke tingkat praktis.
+                                    Sebagai motor penggerak utama, Tim Clasnet memimpin visi teknis perusahaan. Melalui kolaborasi talenta-talenta terbaik dengan pengalaman bertahun-tahun dalam pengembangan perangkat lunak dan arsitektur infrastruktur, tim kami berfokus pada perancangan sistem yang efisien, aman, dan mudah diakses oleh berbagai lapisan masyarakat.
                                 </p>
                             </div>
                         </div>

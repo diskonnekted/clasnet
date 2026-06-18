@@ -66,13 +66,13 @@ export default function AdminDashboard() {
                             <CardHeader className="pb-3 flex flex-row items-start justify-between">
                                 <div>
                                     <CardTitle className="text-lg font-bold text-primary flex items-center gap-2">
-                                        {sub.name} 
-                                        {sub.service && <Badge className="bg-primary/10 text-primary border-none">{sub.service}</Badge>}
+                                        {sub.nama} 
+                                        {sub.kategori && <Badge className="bg-primary/10 text-primary border-none">{sub.kategori}</Badge>}
                                     </CardTitle>
                                     <div className="flex items-center text-xs text-muted-foreground mt-1 gap-4">
-                                        <span>{sub.email}</span>
-                                        {sub.phone && <span>• {sub.phone}</span>}
-                                        {sub.company && <span>• {sub.company}</span>}
+                                        {sub.email && <span>{sub.email}</span>}
+                                        {sub.telepon && <span>• {sub.telepon}</span>}
+                                        {sub.subjek && <span>• {sub.subjek}</span>}
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-end gap-2">
@@ -87,7 +87,7 @@ export default function AdminDashboard() {
                             </CardHeader>
                             <CardContent>
                                 <div className="bg-surface p-4 rounded-md text-sm text-primary/80 border border-border whitespace-pre-wrap">
-                                    {sub.message}
+                                    {sub.pesan}
                                 </div>
                             </CardContent>
                         </Card>
