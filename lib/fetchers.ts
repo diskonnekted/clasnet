@@ -3,6 +3,14 @@ import * as cheerio from 'cheerio';
 // Mengabaikan error sertifikat SSL self-signed saat pengembangan lokal
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
+function proxyImage(url: string): string {
+    if (!url || url.startsWith('/images') || url.startsWith('/api')) return url;
+    if (url.includes('clasnet.co.id') || url.includes('arifsusilo.com')) {
+        return `/api/proxy-image?url=${encodeURIComponent(url)}`;
+    }
+    return url;
+}
+
 export interface Portofolio {
     title: string;
     image: string;
@@ -61,7 +69,7 @@ export async function getPortofolios(page: number = 1): Promise<Portofolio[]> {
 
             ports.push({
                 title: $el.find('h4').text().trim(),
-                image: imageStr,
+                image: proxyImage(imageStr),
                 category: $el.find('.position-absolute').text().trim(),
                 client: $el.find('.p-4 small.me-3').text().trim(),
                 year: $el.find('.p-4 small:not(.me-3)').text().trim(),
@@ -96,7 +104,7 @@ export async function getKegiatans(page: number = 1): Promise<Kegiatan[]> {
 
             kegiatans.push({
                 title,
-                image: imageStr || '/images/Clasnet Group - Logo Fullcolor.png',
+                image: proxyImage(imageStr || '/images/Clasnet Group - Logo Fullcolor.png'),
                 desc: $el.find('p').first().text().trim() || title,
                 link: $el.find('a').first().attr('href') || '#',
             });
@@ -129,7 +137,7 @@ export async function getOrionNews(): Promise<OrionNews[]> {
 
             orions.push({
                 title,
-                image: imageStr || '/images/Clasnet Group - Logo Fullcolor.png',
+                image: proxyImage(imageStr || '/images/Clasnet Group - Logo Fullcolor.png'),
                 desc: $el.find('p').first().text().trim() || title,
                 link: $el.find('a').first().attr('href') || '#',
             });
@@ -156,7 +164,7 @@ export async function getArsipData(page: number = 1): Promise<Arsip[]> {
                 title: post.title,
                 link: post.URL,
                 date: new Date(post.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' }),
-                image: post.featured_image || '/images/Clasnet Group - Logo Fullcolor.png',
+                image: proxyImage(post.featured_image || '/images/Clasnet Group - Logo Fullcolor.png'),
                 excerpt: post.excerpt.replace(/<[^>]*>?/gm, '').substring(0, 100) + '...',
             }
         });
@@ -193,7 +201,7 @@ export async function getInovasiSid(): Promise<Inovasi[]> {
             }
             let desc = $(el).find('p, .excerpt, .desc').text().trim();
             if (desc.length > 150) desc = desc.substring(0, 150) + '...';
-            results.push({ title, desc, image: image || '/images/Clasnet Group - Logo Fullcolor.png', link, source: 'Clasnet SID' });
+            results.push({ title, desc, image: proxyImage(image || '/images/Clasnet Group - Logo Fullcolor.png'), link, source: 'Clasnet SID' });
         });
         return results;
     } catch (e) {
@@ -231,7 +239,7 @@ export async function getInovasiArif(): Promise<Inovasi[]> {
             if (image && !image.startsWith('http')) {
                 image = 'https://arifsusilo.com' + (image.startsWith('/') ? '' : '/') + image;
             }
-            results.push({ title, desc, image: image || '/images/Clasnet Group - Logo Fullcolor.png', link, source: 'Arif Susilo Kreator' });
+            results.push({ title, desc, image: proxyImage(image || '/images/Clasnet Group - Logo Fullcolor.png'), link, source: 'Arif Susilo Kreator' });
         });
         return results;
     } catch(e) {
