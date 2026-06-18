@@ -6,7 +6,7 @@ module.exports = {
             script: "node_modules/next/dist/bin/next", // The script to run
             args: "start", // Arguments for the script
             instances: 1, // Launch 1 instance
-            exec_mode: "cluster", // Enable cluster mode
+            exec_mode: "fork", // Enable fork mode instead of cluster for Next.js
             autorestart: true, // Restart the app if it crashes
             watch: false, // Do not watch for file changes (we handle builds manually)
             max_memory_restart: "8G", // Restart if it exceeds 1GB of memory
