@@ -7,7 +7,6 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileNavigationWrapper } from "@/components/layout/MobileNavigationWrapper";
 import { CustomToast } from "@/components/ui/custom/CustomToast";
 import { BackToTop } from "@/components/ui/custom/BackToTop";
-import { PWAInstallPrompt } from "@/components/ui/custom/PWAInstallPrompt";
 import { ThemeSwitcher } from "@/components/ui/custom/ThemeSwitcher";
 import { env } from "process";
 
@@ -94,7 +93,6 @@ export default function RootLayout({
                 <ThemeSwitcher />
                 <CustomToast />
                 <BackToTop />
-                <PWAInstallPrompt />
             </body>
         </html>
     );
