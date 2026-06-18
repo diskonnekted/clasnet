@@ -58,12 +58,12 @@ export default async function InovasiPage({
                     {allInovasi.length > 0 ? allInovasi.map((item, idx) => (
                         <a key={idx} href={item.link} target="_blank" rel="noopener noreferrer" className="block group">
                             <Card className="overflow-hidden border-border hover:border-secondary/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md h-full flex flex-col">
-                                <div className="aspect-[4/3] bg-primary/5 relative overflow-hidden flex items-center justify-center p-4">
-                                    <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10"></div>
+                                <div className="aspect-[4/3] bg-primary/5 relative overflow-hidden flex items-center justify-center">
+                                    <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
                                     <img 
                                         src={item.image} 
                                         alt={item.title} 
-                                        className="w-full h-full object-cover rounded-md group-hover:scale-105 transition-transform duration-500" 
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                                     />
                                     <Badge className="absolute top-4 right-4 z-20 bg-primary shadow-lg border-none text-xs">
                                         {item.source}

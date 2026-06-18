@@ -69,25 +69,39 @@ export default function ProfilPage() {
                         <div className="w-20 h-1 bg-secondary mx-auto rounded-full"></div>
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
-                        <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
-                            <CardContent className="p-8 text-center">
-                                <Shield className="w-12 h-12 text-secondary mx-auto mb-6" />
-                                <h3 className="text-xl font-bold text-primary mb-4">Profesional & Akuntabel</h3>
-                                <p className="text-muted-foreground">Setiap solusi yang kami bangun didasarkan pada standar industri tertinggi dan dapat dipertanggungjawabkan keandalannya.</p>
+                        {/* Card 1: Profesional (Blue) */}
+                        <Card className="relative overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200 border-none shadow-sm hover:shadow-md transition-shadow group">
+                            <Shield className="absolute -right-6 -bottom-6 w-40 h-40 text-blue-300/40 transform group-hover:scale-110 transition-transform duration-500" />
+                            <CardContent className="p-8 text-center relative z-10">
+                                <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-6 shadow-inner">
+                                    <Shield className="w-8 h-8 text-blue-700" />
+                                </div>
+                                <h3 className="text-xl font-bold text-blue-800 mb-4">Profesional & Akuntabel</h3>
+                                <p className="text-blue-900/80 font-medium">Setiap solusi yang kami bangun didasarkan pada standar industri tertinggi dan dapat dipertanggungjawabkan keandalannya.</p>
                             </CardContent>
                         </Card>
-                        <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
-                            <CardContent className="p-8 text-center">
-                                <Users className="w-12 h-12 text-secondary mx-auto mb-6" />
-                                <h3 className="text-xl font-bold text-primary mb-4">Kolaboratif</h3>
-                                <p className="text-muted-foreground">Kami percaya pada kekuatan Open Source dan pengembangan yang melibatkan partisipasi aktif dari komunitas dan klien.</p>
+                        
+                        {/* Card 2: Kolaboratif (Emerald) */}
+                        <Card className="relative overflow-hidden bg-gradient-to-br from-emerald-100 to-emerald-200 border-none shadow-sm hover:shadow-md transition-shadow group">
+                            <Users className="absolute -left-6 -bottom-6 w-40 h-40 text-emerald-300/40 transform group-hover:scale-110 transition-transform duration-500" />
+                            <CardContent className="p-8 text-center relative z-10">
+                                <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-6 shadow-inner">
+                                    <Users className="w-8 h-8 text-emerald-700" />
+                                </div>
+                                <h3 className="text-xl font-bold text-emerald-800 mb-4">Kolaboratif</h3>
+                                <p className="text-emerald-900/80 font-medium">Kami percaya pada kekuatan Open Source dan pengembangan yang melibatkan partisipasi aktif dari komunitas dan klien.</p>
                             </CardContent>
                         </Card>
-                        <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
-                            <CardContent className="p-8 text-center">
-                                <Handshake className="w-12 h-12 text-secondary mx-auto mb-6" />
-                                <h3 className="text-xl font-bold text-primary mb-4">Pendampingan Berkelanjutan</h3>
-                                <p className="text-muted-foreground">Kami tidak hanya membangun sistem, tetapi juga memastikan pengguna memahami dan dapat memanfaatkannya secara maksimal.</p>
+                        
+                        {/* Card 3: Pendampingan (Amber) */}
+                        <Card className="relative overflow-hidden bg-gradient-to-br from-amber-100 to-amber-200 border-none shadow-sm hover:shadow-md transition-shadow group">
+                            <Handshake className="absolute -right-6 -top-6 w-40 h-40 text-amber-300/40 transform group-hover:scale-110 transition-transform duration-500" />
+                            <CardContent className="p-8 text-center relative z-10">
+                                <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center mx-auto mb-6 shadow-inner">
+                                    <Handshake className="w-8 h-8 text-amber-700" />
+                                </div>
+                                <h3 className="text-xl font-bold text-amber-800 mb-4">Pendampingan Berkelanjutan</h3>
+                                <p className="text-amber-900/80 font-medium">Kami tidak hanya membangun sistem, tetapi juga memastikan pengguna memahami dan dapat memanfaatkannya secara maksimal.</p>
                             </CardContent>
                         </Card>
                     </div>

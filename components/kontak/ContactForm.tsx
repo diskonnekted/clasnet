@@ -205,69 +205,82 @@ export function ContactForm() {
 
             {/* Right Column - Information */}
             <div className="space-y-6">
-                <Card className="bg-surface border-l-4 border-l-red-500 shadow-sm">
-                    <CardContent className="p-6">
-                        <h3 className="font-bold flex items-center text-red-600 mb-3">
-                            <AlertCircle className="w-5 h-5 mr-2" />
-                            Dukungan Darurat
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4">
+                {/* Card 1: Darurat (Red) */}
+                <Card className="relative overflow-hidden bg-gradient-to-br from-red-100 to-red-200 border-none shadow-sm hover:shadow-md transition-shadow group">
+                    <AlertCircle className="absolute -right-6 -bottom-6 w-32 h-32 text-red-300/40 transform group-hover:scale-110 transition-transform duration-500" />
+                    <CardContent className="p-6 relative z-10">
+                        <div className="flex items-center mb-4">
+                            <AlertCircle className="w-5 h-5 mr-2 text-red-700" />
+                            <h3 className="font-bold text-red-800 text-base">Dukungan Darurat</h3>
+                        </div>
+                        <p className="text-sm text-red-800/80 mb-6 font-medium leading-relaxed">
                             Untuk kendala server down atau sistem kritis yang memerlukan penanganan segera.
                         </p>
-                        <span className="inline-block px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full shadow-sm border border-red-200">
+                        <span className="inline-block px-4 py-1.5 bg-red-500/10 text-red-800 text-xs font-bold rounded-lg border border-red-500/20 backdrop-blur-sm">
                             Respon: Segera
                         </span>
                     </CardContent>
                 </Card>
 
-                <Card className="bg-surface border-l-4 border-l-amber-500 shadow-sm">
-                    <CardContent className="p-6">
-                        <h3 className="font-bold flex items-center text-amber-600 mb-3">
-                            <Clock className="w-5 h-5 mr-2" />
-                            Permintaan Penawaran
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4">
+                {/* Card 2: Penawaran (Amber/Yellow) */}
+                <Card className="relative overflow-hidden bg-gradient-to-br from-amber-100 to-amber-200 border-none shadow-sm hover:shadow-md transition-shadow group">
+                    <Clock className="absolute -right-6 -bottom-6 w-32 h-32 text-amber-300/40 transform group-hover:scale-110 transition-transform duration-500" />
+                    <CardContent className="p-6 relative z-10">
+                        <div className="flex items-center mb-4">
+                            <Clock className="w-5 h-5 mr-2 text-amber-700" />
+                            <h3 className="font-bold text-amber-800 text-base">Permintaan Penawaran</h3>
+                        </div>
+                        <p className="text-sm text-amber-800/80 mb-6 font-medium leading-relaxed">
                             Untuk konsultasi proyek, proposal, dan pengadaan sistem informasi.
                         </p>
-                        <span className="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full shadow-sm border border-amber-200">
+                        <span className="inline-block px-4 py-1.5 bg-amber-500/10 text-amber-800 text-xs font-bold rounded-lg border border-amber-500/20 backdrop-blur-sm">
                             Respon: 1x24 Jam
                         </span>
                     </CardContent>
                 </Card>
 
-                <Card className="bg-surface border-l-4 border-l-emerald-500 shadow-sm">
-                    <CardContent className="p-6">
-                        <h3 className="font-bold flex items-center text-emerald-600 mb-3">
-                            <ShieldCheck className="w-5 h-5 mr-2" />
-                            Informasi Umum
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4">
+                {/* Card 3: Umum (Emerald/Green) */}
+                <Card className="relative overflow-hidden bg-gradient-to-br from-emerald-100 to-emerald-200 border-none shadow-sm hover:shadow-md transition-shadow group">
+                    <ShieldCheck className="absolute -right-6 -bottom-6 w-32 h-32 text-emerald-300/40 transform group-hover:scale-110 transition-transform duration-500" />
+                    <CardContent className="p-6 relative z-10">
+                        <div className="flex items-center mb-4">
+                            <ShieldCheck className="w-5 h-5 mr-2 text-emerald-700" />
+                            <h3 className="font-bold text-emerald-800 text-base">Informasi Umum</h3>
+                        </div>
+                        <p className="text-sm text-emerald-800/80 mb-6 font-medium leading-relaxed">
                             Pertanyaan umum terkait layanan, kemitraan, dan produk Clasnet.
                         </p>
-                        <span className="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full shadow-sm border border-emerald-200">
+                        <span className="inline-block px-4 py-1.5 bg-emerald-500/10 text-emerald-800 text-xs font-bold rounded-lg border border-emerald-500/20 backdrop-blur-sm">
                             Respon: 2x24 Jam
                         </span>
                     </CardContent>
                 </Card>
 
-                <Card className="bg-primary/5 border-primary/20 shadow-sm">
-                    <CardContent className="p-6">
-                        <h3 className="font-bold flex items-center text-primary mb-4">
-                            Kontak Langsung
-                        </h3>
+                {/* Card 4: Kontak (Blue/Primary) */}
+                <Card className="relative overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200 border-none shadow-sm hover:shadow-md transition-shadow group">
+                    <Phone className="absolute -right-6 -bottom-6 w-32 h-32 text-blue-300/40 transform group-hover:scale-110 transition-transform duration-500" />
+                    <CardContent className="p-6 relative z-10">
+                        <div className="flex items-center mb-4">
+                            <Phone className="w-5 h-5 mr-2 text-blue-700" />
+                            <h3 className="font-bold text-blue-800 text-base">Kontak Langsung</h3>
+                        </div>
                         <ul className="space-y-4">
                             <li className="flex items-start">
-                                <Phone className="w-5 h-5 text-secondary mr-3 mt-0.5" />
+                                <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <Phone className="w-4 h-4 text-blue-700" />
+                                </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-foreground">Hotline & WhatsApp</p>
-                                    <p className="text-sm text-muted-foreground">+62 851 1704 1846</p>
+                                    <p className="text-xs font-bold text-blue-800/70 uppercase tracking-wider">Hotline</p>
+                                    <p className="text-sm font-semibold text-blue-900">+62 851 1704 1846</p>
                                 </div>
                             </li>
                             <li className="flex items-start">
-                                <Mail className="w-5 h-5 text-secondary mr-3 mt-0.5" />
+                                <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <Mail className="w-4 h-4 text-blue-700" />
+                                </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-foreground">Email Resmi</p>
-                                    <p className="text-sm text-muted-foreground">info@clasnet.id</p>
+                                    <p className="text-xs font-bold text-blue-800/70 uppercase tracking-wider">Email</p>
+                                    <p className="text-sm font-semibold text-blue-900">info@clasnet.id</p>
                                 </div>
                             </li>
                         </ul>
