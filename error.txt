@@ -1,0 +1,294 @@
+ld handle it in that context. This occurred at route "/api/iot".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at R (app/api/iot/route.ts:6:44)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error fetching data for channel 3156242: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at R (app/api/iot/route.ts:6:44)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error fetching data for channel 3160660: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at R (app/api/iot/route.ts:6:44)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error fetching IoT data: Error: Failed to fetch any IoT devices. Errors: Channel 3155825: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".; Channel 3156242: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".; Channel 3160660: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".
+    at a (lib/thingspeak.ts:290:15)
+    at async R (app/api/iot/route.ts:6:38)
+  288 |             .map((e) => `Channel ${e.channel}: ${(e.error as Error).message || "Unknown error"}`)
+  289 |             .join("; ");
+> 290 |         throw new Error(`Failed to fetch any IoT devices. Errors: ${errorMessages}`);
+      |               ^
+  291 |     }
+  292 |
+  293 |     // Log warnings for partial failures
+Error fetching data for channel 3155825: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at R (app/api/iot/route.ts:6:44)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error fetching data for channel 3156242: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at R (app/api/iot/route.ts:6:44)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error fetching data for channel 3160660: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at R (app/api/iot/route.ts:6:44)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+API Route Error: Error: Route /api/wilayah needs to bail out of prerendering at this point because it used request.url.
+    at d (lib/api-helpers.ts:17:46)
+    at <unknown> (app/api/wilayah/route.ts:5:5)
+    at <unknown> (lib/api-helpers.ts:247:40)
+    at c (lib/api-service.ts:307:12)
+    at GET (lib/api-helpers.ts:246:20)
+  15 |  */
+  16 | export function extractQueryParams(request: NextRequest) {
+> 17 |     const { searchParams } = new URL(request.url);
+     |                                              ^
+  18 |     return {
+  19 |         page: parseInt(searchParams.get("halaman") || searchParams.get("page") || "1"),
+  20 |         limit: parseInt(searchParams.get("limit") || "10"), {
+  digest: 'NEXT_PRERENDER_INTERRUPTED'
+}
+Error fetching IoT data: Error: Failed to fetch any IoT devices. Errors: Channel 3155825: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".; Channel 3156242: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".; Channel 3160660: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot".
+    at a (lib/thingspeak.ts:290:15)
+    at async R (app/api/iot/route.ts:6:38)
+  288 |             .map((e) => `Channel ${e.channel}: ${(e.error as Error).message || "Unknown error"}`)
+  289 |             .join("; ");
+> 290 |         throw new Error(`Failed to fetch any IoT devices. Errors: ${errorMessages}`);
+      |               ^
+  291 |     }
+  292 |
+  293 |     // Log warnings for partial failures
+Starting IoT data polling...
+Error fetching data for channel 3155825: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot/stream".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at n (app/api/iot/stream/route.ts:62:32)
+    at <unknown> (app/api/iot/stream/route.ts:103:5)
+    at Object.start (app/api/iot/stream/route.ts:107:1)
+    at R (app/api/iot/stream/route.ts:9:20)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot/stream',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error fetching data for channel 3156242: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot/stream".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at n (app/api/iot/stream/route.ts:62:32)
+    at <unknown> (app/api/iot/stream/route.ts:103:5)
+    at Object.start (app/api/iot/stream/route.ts:107:1)
+    at R (app/api/iot/stream/route.ts:9:20)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot/stream',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error fetching data for channel 3160660: Error: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot/stream".
+    at n (lib/thingspeak.ts:162:37)
+    at <unknown> (lib/thingspeak.ts:264:9)
+    at Array.map (<anonymous>)
+    at a (lib/thingspeak.ts:263:47)
+    at n (app/api/iot/stream/route.ts:62:32)
+    at <unknown> (app/api/iot/stream/route.ts:103:5)
+    at Object.start (app/api/iot/stream/route.ts:107:1)
+    at R (app/api/iot/stream/route.ts:9:20)
+  160 |
+  161 |     try {
+> 162 |         const feedsResponse = await fetch(`${API_BASE_URL}/feeds.json?results=${results}`, {
+      |                                     ^
+  163 |             method: "GET",
+  164 |             headers: {
+  165 |                 "User-Agent": {
+  route: '/api/iot/stream',
+  expression: 'fetch()',
+  digest: 'HANGING_PROMISE_REJECTION'
+}
+Error polling IoT data: Error: Failed to fetch any IoT devices. Errors: Channel 3155825: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot/stream".; Channel 3156242: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot/stream".; Channel 3160660: During prerendering, fetch() rejects when the prerender is complete. Typically these errors are handled by React but if you move fetch() to a different context by using `setTimeout`, `after`, or similar functions you may observe this error and you should handle it in that context. This occurred at route "/api/iot/stream".
+    at a (lib/thingspeak.ts:290:15)
+    at async n (app/api/iot/stream/route.ts:62:26)
+  288 |             .map((e) => `Channel ${e.channel}: ${(e.error as Error).message || "Unknown error"}`)
+  289 |             .join("; ");
+> 290 |         throw new Error(`Failed to fetch any IoT devices. Errors: ${errorMessages}`);
+      |               ^
+  291 |     }
+  292 |
+  293 |     // Log warnings for partial failures
+API Route Error: Error: Route /api/wilayah needs to bail out of prerendering at this point because it used request.url.
+    at d (lib/api-helpers.ts:17:46)
+    at <unknown> (app/api/wilayah/route.ts:5:5)
+    at <unknown> (lib/api-helpers.ts:247:40)
+    at c (lib/api-service.ts:307:12)
+    at GET (lib/api-helpers.ts:246:20)
+  15 |  */
+  16 | export function extractQueryParams(request: NextRequest) {
+> 17 |     const { searchParams } = new URL(request.url);
+     |                                              ^
+  18 |     return {
+  19 |         page: parseInt(searchParams.get("halaman") || searchParams.get("page") || "1"),
+  20 |         limit: parseInt(searchParams.get("limit") || "10"), {
+  digest: 'NEXT_PRERENDER_INTERRUPTED'
+}
+API Route Error: Error: Route /api/pembangunan needs to bail out of prerendering at this point because it used request.url.
+    at d (lib/api-helpers.ts:17:46)
+    at <unknown> (app/api/pembangunan/route.ts:5:5)
+    at <unknown> (lib/api-helpers.ts:247:40)
+    at c (lib/api-service.ts:307:12)
+    at GET (lib/api-helpers.ts:246:20)
+  15 |  */
+  16 | export function extractQueryParams(request: NextRequest) {
+> 17 |     const { searchParams } = new URL(request.url);
+     |                                              ^
+  18 |     return {
+  19 |         page: parseInt(searchParams.get("halaman") || searchParams.get("page") || "1"),
+  20 |         limit: parseInt(searchParams.get("limit") || "10"), {
+  digest: 'NEXT_PRERENDER_INTERRUPTED'
+}
+API Route Error: Error: Route /api/pembangunan needs to bail out of prerendering at this point because it used request.url.
+    at d (lib/api-helpers.ts:17:46)
+    at <unknown> (app/api/pembangunan/route.ts:5:5)
+    at <unknown> (lib/api-helpers.ts:247:40)
+    at c (lib/api-service.ts:307:12)
+    at GET (lib/api-helpers.ts:246:20)
+  15 |  */
+  16 | export function extractQueryParams(request: NextRequest) {
+> 17 |     const { searchParams } = new URL(request.url);
+     |                                              ^
+  18 |     return {
+  19 |         page: parseInt(searchParams.get("halaman") || searchParams.get("page") || "1"),
+  20 |         limit: parseInt(searchParams.get("limit") || "10"), {
+  digest: 'NEXT_PRERENDER_INTERRUPTED'
+}
+API Route Error: Error: Route /api/ppid needs to bail out of prerendering at this point because it used request.url.
+    at d (lib/api-helpers.ts:17:46)
+    at <unknown> (app/api/ppid/route.ts:5:5)
+    at <unknown> (lib/api-helpers.ts:247:40)
+    at c (lib/api-service.ts:307:12)
+    at GET (lib/api-helpers.ts:246:20)
+  15 |  */
+  16 | export function extractQueryParams(request: NextRequest) {
+> 17 |     const { searchParams } = new URL(request.url);
+     |                                              ^
+  18 |     return {
+  19 |         page: parseInt(searchParams.get("halaman") || searchParams.get("page") || "1"),
+  20 |         limit: parseInt(searchParams.get("limit") || "10"), {
+  digest: 'NEXT_PRERENDER_INTERRUPTED'
+}
+API Route Error: Error: Route /api/ppid needs to bail out of prerendering at this point because it used request.url.
+    at d (lib/api-helpers.ts:17:46)
+    at <unknown> (app/api/ppid/route.ts:5:5)
+    at <unknown> (lib/api-helpers.ts:247:40)
+    at c (lib/api-service.ts:307:12)
+    at GET (lib/api-helpers.ts:246:20)
+  15 |  */
+  16 | export function extractQueryParams(request: NextRequest) {
+> 17 |     const { searchParams } = new URL(request.url);
+     |                                              ^
+  18 |     return {
+  19 |         page: parseInt(searchParams.get("halaman") || searchParams.get("page") || "1"),
+  20 |         limit: parseInt(searchParams.get("limit") || "10"), {
+  digest: 'NEXT_PRERENDER_INTERRUPTED'
+}
+Error: Route "/inovasi": Uncached data was accessed outside of <Suspense>. This delays the entire page from rendering, resulting in a slow user experience. Learn more: https://nextjs.org/docs/messages/blocking-route
+    at main (<anonymous>)
+    at div (<anonymous>)
+    at body (<anonymous>)
+    at html (<anonymous>)
+To get a more detailed stack trace and pinpoint the issue, try one of the following:
+  - Start the app in development mode by running `next dev`, then open "/inovasi" in your browser to investigate the error.
+  - Rerun the production build with `next build --debug-prerender` to generate better stack traces.
+Error occurred prerendering page "/inovasi". Read more: https://nextjs.org/docs/messages/prerender-error
+Export encountered an error on /inovasi/page: /inovasi, exiting the build.
+ ⨯ Next.js build worker exited with code: 1 and signal: null

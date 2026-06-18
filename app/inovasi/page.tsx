@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React from "react";
 import { ExternalLink, Rocket, Lightbulb, Zap, Github, CodeSquare } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";

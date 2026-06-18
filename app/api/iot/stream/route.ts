@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { fetchAllIoTData } from "@/lib/thingspeak";
 
 const activeConnections: Set<ReadableStreamDefaultController> = new Set();
