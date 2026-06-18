@@ -10,14 +10,14 @@ import { Logo, LogoVariant } from "@/components/ui/custom/Logo";
 export function Footer() {
     const { t } = useTranslation();
 
-    const quickLinks = [
+    const quickLinks: { href: string; label: string; external?: boolean }[] = [
         { href: "/", label: "Beranda" },
         { href: "/profil", label: "Profil Perusahaan" },
         { href: "/layanan", label: "Layanan & Solusi" },
         { href: "/produk", label: "Produk (Orion)" },
     ];
 
-    const layananLinks = [
+    const layananLinks: { href: string; label: string; external?: boolean }[] = [
         { href: "/layanan", label: "Sistem Informasi Desa (SID)" },
         { href: "/layanan", label: "Dasbor SID" },
         { href: "/produk", label: "Orion CMS" },
