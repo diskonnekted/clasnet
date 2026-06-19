@@ -15,6 +15,10 @@ export function Footer() {
         { href: "/profil", label: "Profil Perusahaan" },
         { href: "/layanan", label: "Layanan & Solusi" },
         { href: "/produk", label: "Produk (Orion)" },
+        { href: "https://padiumkm.id/store/631a50937255a77e0e6e5ca5", label: "Padi UMKM", external: true },
+        { href: "https://siplah.clasnet.id/merchant-detail/SCLA-0011?itemPerPage=40&page=0&merchantId=SCLA-0011", label: "Siplah Clasnet", external: true },
+        { href: "https://katalog.inaproc.id/clasnet", label: "Inaproc Clasnet", external: true },
+        { href: "https://hub.ekraf.go.id/users/58135409-83f6-4808-80ed-7f4d908019ac/business/5b34e795-d9f9-4999-a569-62403abb0585/produk", label: "Ekraf Orion", external: true },
     ];
 
     const layananLinks: { href: string; label: string; external?: boolean }[] = [
