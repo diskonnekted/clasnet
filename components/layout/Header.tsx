@@ -98,7 +98,7 @@ export function Header() {
                                 href="/"
                                 className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer"
                             >
-                                <img src="/images/Clasnet Group - Clear Logo - white.png" alt="Clasnet Logo" className="h-8 w-auto object-contain" />
+                                <img src="/images/clasnet-group-white.svg" alt="Clasnet Logo" className="h-8 w-auto object-contain" />
                             </Link>
                         </div>
 

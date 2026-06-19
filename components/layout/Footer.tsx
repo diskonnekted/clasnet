@@ -69,7 +69,7 @@ export function Footer() {
                     {/* About Section */}
                     <div className="space-y-4">
                         <div className="flex items-center space-x-3">
-                            <img src="/images/Clasnet Group - Clear Logo - white.png" alt="Clasnet Logo" className="h-10 w-auto object-contain" />
+                            <img src="/images/clasnet-group-white.svg" alt="Clasnet Logo" className="h-10 w-auto object-contain" />
                         </div>
                         <p className="text-sm text-white/80 leading-relaxed">
                             Clasnet adalah perusahaan teknologi terdepan di Indonesia yang berfokus pada pengembangan solusi digital & Inovasi IoT.
