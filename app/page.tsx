@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { ArrowRight, Building2, Cpu, Globe, Activity, Users, Sparkles, Server, MonitorSmartphone, Code, ExternalLink } from "lucide-react";
+import { ArrowRight, Building2, Cpu, Globe, Activity, Users, Sparkles, Server, MonitorSmartphone, Code, ExternalLink, Video } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -87,6 +87,11 @@ export default async function Home() {
                                         <h4 className="font-bold text-sm text-primary mb-1">Orion Versa</h4>
                                         <p className="text-xs text-muted-foreground mb-2">Sistem peringatan dini (EWS) dan perangkat IoT cerdas.</p>
                                         <Link href="/produk" className="text-xs font-semibold text-secondary hover:text-primary flex items-center">Selengkapnya <ArrowRight className="ml-1 w-3 h-3" /></Link>
+                                    </div>
+                                    <div className="bg-primary/5 p-3 rounded-lg border border-primary/10 hover:border-secondary/50 transition-colors">
+                                        <h4 className="font-bold text-sm text-primary mb-1 flex items-center"><Video className="w-3.5 h-3.5 mr-1.5 text-secondary" />CCTV Clasnet</h4>
+                                        <p className="text-xs text-muted-foreground mb-2">Layanan pemantauan CCTV dengan teknologi AI dan notifikasi real-time.</p>
+                                        <Link href="/cctv" className="text-xs font-semibold text-secondary hover:text-primary flex items-center">Selengkapnya <ArrowRight className="ml-1 w-3 h-3" /></Link>
                                     </div>
                                 </CardContent>
                             </Card>
