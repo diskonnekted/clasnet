@@ -261,3 +261,54 @@ export async function getInovasiGithub(): Promise<Inovasi[]> {
         return [];
     }
 }
+
+export interface CCTVArticle {
+    title: string;
+    image: string;
+    date: string;
+    desc: string;
+    link: string;
+}
+
+export async function getCCTVArticles(): Promise<CCTVArticle[]> {
+    try {
+        const res = await fetch('https://cctv.clasnet.id/', {
+            next: { revalidate: 3600 }
+        });
+        const html = await res.text();
+        const $ = cheerio.load(html);
+        
+        const results: CCTVArticle[] = [];
+        $('.bdpp-post-grid-content').each((i, el) => {
+            const $el = $(el);
+            const title = $el.find('.bdpp-post-title a').text().trim();
+            if (!title) return;
+            
+            const link = $el.find('.bdpp-post-title a').attr('href') || '#';
+            let image = $el.find('.bdpp-post-img-bg img').attr('src') || '';
+            
+            // Handle relative URLs if any
+            if (image && !image.startsWith('http')) {
+                image = 'https://cctv.clasnet.id' + (image.startsWith('/') ? '' : '/') + image;
+            }
+            
+            const date = $el.find('.bdpp-post-date').text().trim();
+            let desc = $el.find('.bdpp-post-desc').text().trim();
+            if (desc.length > 150) desc = desc.substring(0, 150) + '...';
+            
+            results.push({ 
+                title, 
+                image: proxyImage(image || '/images/Clasnet Group - Logo Fullcolor.png'), 
+                date, 
+                desc, 
+                link 
+            });
+        });
+        
+        return results;
+    } catch (e) {
+        console.error("Error fetching CCTV articles", e);
+        return [];
+    }
+}
+

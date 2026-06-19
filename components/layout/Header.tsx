@@ -23,6 +23,7 @@ import {
     CreditCard,
     GraduationCap,
     Lightbulb,
+    Video,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -56,6 +57,7 @@ export function Header() {
         { href: "/", label: "Beranda", icon: Home },
         { href: "/profil", label: "Profil", icon: Building2 },
         { href: "/layanan", label: "Layanan", icon: Sparkles },
+        { href: "/cctv", label: "CCTV", icon: Video },
         { href: "/portofolio", label: "Portofolio", icon: Users },
         { href: "/produk", label: "Produk", icon: Cpu },
         { href: "/inovasi", label: "Inovasi", icon: Lightbulb },

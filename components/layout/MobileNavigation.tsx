@@ -35,6 +35,7 @@ import {
     CreditCard,
     ChevronRight,
     Sparkles,
+    Video,
 } from "lucide-react";
 
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -90,6 +91,7 @@ export function MobileNavigation() {
         { href: "/idm", label: "IDM", icon: FileText },
         { href: "/sdgs", label: "SDGs", icon: Globe },
         { href: "/iot", label: "IoT", icon: Monitor },
+        { href: "/cctv", label: "CCTV", icon: Video },
         { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: translations.navigation.pengaduan, icon: MessageSquare, external: true },
     ];
 
