@@ -92,6 +92,7 @@ export function MobileNavigation() {
         { href: "/sdgs", label: "SDGs", icon: Globe },
         { href: "/iot", label: "IoT", icon: Monitor },
         { href: "/cctv", label: "CCTV", icon: Video },
+        { href: "/csr", label: "CSR", icon: Heart },
         { href: "https://pondokrejo.sleman-desa.id/index.php/pengaduan", label: translations.navigation.pengaduan, icon: MessageSquare, external: true },
     ];
 

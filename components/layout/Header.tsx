@@ -58,6 +58,7 @@ export function Header() {
         { href: "/profil", label: "Profil", icon: Building2 },
         { href: "/layanan", label: "Layanan", icon: Sparkles },
         { href: "/cctv", label: "CCTV", icon: Video },
+        { href: "/csr", label: "CSR", icon: Heart },
         { href: "/portofolio", label: "Portofolio", icon: Users },
         { href: "/produk", label: "Produk", icon: Cpu },
         { href: "/inovasi", label: "Inovasi", icon: Lightbulb },
