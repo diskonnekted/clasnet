@@ -26,6 +26,7 @@ export function Footer() {
         { href: "https://desaonline.cloud", label: "Dasbor SID", external: true },
         { href: "https://orionapp.clasnet.co.id", label: "Orion CMS", external: true },
         { href: "https://orion.clasnet.co.id", label: "Orion Versa (IoT)", external: true },
+        { href: "/csr", label: "CSR - Website Gratis", external: false },
     ];
 
     // Simple icon wrapper component for simple-icons
