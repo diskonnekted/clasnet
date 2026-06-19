@@ -18,7 +18,8 @@ export default async function Home() {
     return (
         <div className="flex flex-col min-h-screen">
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-primary">
+            <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-primary bg-cover bg-center" style={{ backgroundImage: "url(/hero1.jpeg)" }}>
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/75 to-primary/85"></div>
                 <NetworkAnimation />
 
                 <div className="container mx-auto px-4 relative z-10">
